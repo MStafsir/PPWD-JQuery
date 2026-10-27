@@ -100,6 +100,23 @@ body {
 .kartu p {
   margin: 0;
   color: var(--teks-pudar);
+  font-size: 0.95rem;
+}
+.kartu .tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(15, 118, 110, 0.12);
+  color: var(--aksen);
+  margin-bottom: 8px;
+}
+body.gelap .kartu .tag {
+  background: rgba(95, 209, 196, 0.15);
+  color: var(--aksen);
 }
 /* Pesan "tidak ditemukan" disembunyikan dulu */
 .pesan-kosong {

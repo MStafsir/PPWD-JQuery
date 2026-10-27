@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNews ID - Portal Berita Terkini</title>
+    <!-- Load Bootstrap 5 CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Tambahan styling dasar untuk hero dan gambar kartu */
+        .hero-gradasi {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://picsum.photos/1200/400') center/cover;
+            color: white;
+            padding: 100px 0;
+        }
+
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+  <!-- Tombol kembali ke portal. ../ = naik satu folder ke index.html utama -->
+  <a href="../index.html" title="Kembali ke portofolio" style="position:fixed;left:16px;bottom:16px;z-index:99999;padding:10px 16px;border-radius:999px;background:rgba(17,24,39,.85);color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25);backdrop-filter:blur(6px)">&larr; Portofolio</a>
+
+    <!-- 1. Header / Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">TechNews ID</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Teknologi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Gadget</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Startups</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Headline Utama (Hero) -->
+    <!-- Memakai .col-12 penuh dengan latar gradasi gelap -->
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div class="col-12 hero-gradasi text-center">
+                <div class="container">
+                    <h1 class="display-4 fw-bold">Revolusi AI di Tahun 2026</h1>
+                    <p class="lead">Bagaimana kecerdasan buatan mengubah lanskap industri teknologi dunia.</p>
+                    <a href="#" class="btn btn-primary btn-lg mt-3">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container Utama untuk Konten Berita -->
+    <div class="container my-5">
+
+        <!-- 3. Area Berita Utama + Sidebar -->
+        <div class="row g-4 mb-5">
+            <!-- Berita Utama: Dibagi .col-12 (Mobile) & .col-lg-8 (Desktop) -->
+            <div class="col-12 col-lg-8">
+                <h3 class="border-bottom pb-2 mb-3">Berita Sorotan</h3>
+                <img src="https://picsum.photos/800/400?random=1" class="img-fluid rounded mb-3" alt="Berita Utama">
+                <h4>Peluncuran Smartphone Lipat Generasi Terbaru</h4>
+                <p class="text-muted">Desember 15, 2026 | Oleh Tech Writer</p>
+                <p>Generasi terbaru dari lini smartphone lipat akhirnya resmi diluncurkan ke pasar global. Dengan desain
+                    yang lebih tipis, engsel yang lebih kuat, dan dukungan prosesor paling mutakhir, perangkat ini
+                    diklaim akan meredefinisi produktivitas *mobile*...</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Baca selengkapnya</a>
+            </div>
+
+            <!-- Sidebar Trending: Dibagi .col-12 (Mobile) & .col-lg-4 (Desktop) -->
+            <div class="col-12 col-lg-4">
+                <h3 class="border-bottom pb-2 mb-3">🔥 Trending</h3>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <h6 class="mb-1">Bahasa Pemrograman Paling Dicari Tahun Ini</h6>
+                        <small class="text-muted">10 jam yang lalu</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <h6 class="mb-1">Update Keamanan Kritis untuk Windows</h6>
+                        <small class="text-muted">12 jam yang lalu</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <h6 class="mb-1">Masa Depan Web: Web3 dan Desentralisasi</h6>
+                        <small class="text-muted">1 hari yang lalu</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <h6 class="mb-1">Review Laptop Gaming Ringan Terbaik</h6>
+                        <small class="text-muted">2 hari yang lalu</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Grid Berita Terbaru -->
+        <!-- Baris berisi 4 kartu berita sejajar memakai .col-12 .col-md-6 .col-lg-3 -->
+        <h3 class="border-bottom pb-2 mb-4">Berita Terbaru</h3>
+        <div class="row g-4">
+
+            <!-- Kartu 1 -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://picsum.photos/400/300?random=2" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Perkembangan Baterai Solid-State</h5>
+                        <p class="card-text small">Era mobil listrik semakin dekat dengan inovasi baterai pengisian
+                            super cepat.</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="#" class="btn btn-sm btn-primary w-100">Buka Berita</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kartu 2 -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://picsum.photos/400/300?random=3" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ancaman Siber Meningkat Tajam</h5>
+                        <p class="card-text small">Laporan tahunan keamanan jaringan menyoroti kerentanan baru di sektor
+                            publik.</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="#" class="btn btn-sm btn-primary w-100">Buka Berita</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kartu 3 -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://picsum.photos/400/300?random=4" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Startup Lokal Mendapat Pendanaan</h5>
+                        <p class="card-text small">Platform e-commerce lokal sukses raih pendanaan Seri B senilai 50
+                            juta Dolar.</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="#" class="btn btn-sm btn-primary w-100">Buka Berita</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kartu 4 -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://picsum.photos/400/300?random=5" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Kamera Mirrorless Baru Rilis</h5>
+                        <p class="card-text small">Fitur autofokus berbasis AI menjadikannya andalan baru bagi
+                            fotografer profesional.</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        <a href="#" class="btn btn-sm btn-primary w-100">Buka Berita</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 5. Footer -->
+    <!-- Area bagian bawah dengan bg-dark text-white py-4 -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <h5 class="mb-3">TechNews ID</h5>
+            <p class="small text-muted mb-0">© 2026 TechNews ID - Portal Berita Teknologi Terpercaya. Hak Cipta
+                Dilindungi.</p>
+            <p class="small text-muted">Dibuat oleh: Muhamad Sholichin | H1101251016</p>
+        </div>
+    </footer>
+
+    <!-- Load Bootstrap 5 JS via CDN (opsional untuk fungsi interaktif seperti navbar toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

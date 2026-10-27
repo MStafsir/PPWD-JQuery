@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRIDE — Premium Footwear | Toko Sepatu Online</title>
+    <meta name="description"
+        content="STRIDE menghadirkan koleksi sepatu premium pilihan: sneakers urban, formal oxford, dan running shoes berteknologi tinggi. Kualitas terjamin dengan kenyamanan kelas dunia.">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- jQuery 3.7.1 CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- jQuery Validation Plugin CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Tombol kembali ke portal. ../ = naik satu folder ke index.html utama -->
+  <a href="../index.html" title="Kembali ke portofolio" style="position:fixed;left:16px;bottom:16px;z-index:99999;padding:10px 16px;border-radius:999px;background:rgba(17,24,39,.85);color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25);backdrop-filter:blur(6px)">&larr; Portofolio</a>
+
+    <!-- ======================================================
+         TOP ANNOUNCEMENT BAR (RUNNING TICKER / MARQUEE)
+    ====================================================== -->
+    <div class="top-bar">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span><i class="fa-solid fa-sparkles"></i> NEW DROP 2026: STRIDE ARCHIVE SERIES TERSEDIA SEKARANG</span>
+                <span class="dot-sep">•</span>
+                <span><i class="fa-solid fa-truck-fast"></i> GRATIS ONGKIR SELURUH INDONESIA MIN. BELANJA RP
+                    500.000</span>
+                <span class="dot-sep">•</span>
+                <span><i class="fa-solid fa-shield-check"></i> 100% GARANSI KEASLIAN &amp; KULIT ASLI PREMIUM</span>
+                <span class="dot-sep">•</span>
+                <span><i class="fa-solid fa-rotate-left"></i> BEBAS TUKAR UKURAN DALAM 30 HARI TANPA BIAYA</span>
+                <span class="dot-sep">•</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span><i class="fa-solid fa-sparkles"></i> NEW DROP 2026: STRIDE ARCHIVE SERIES TERSEDIA SEKARANG</span>
+                <span class="dot-sep">•</span>
+                <span><i class="fa-solid fa-truck-fast"></i> GRATIS ONGKIR SELURUH INDONESIA MIN. BELANJA RP
+                    500.000</span>
+                <span class="dot-sep">•</span>
+                <span><i class="fa-solid fa-shield-check"></i> 100% GARANSI KEASLIAN &amp; KULIT ASLI PREMIUM</span>
+                <span class="dot-sep">•</span>
+                <span><i class="fa-solid fa-rotate-left"></i> BEBAS TUKAR UKURAN DALAM 30 HARI TANPA BIAYA</span>
+                <span class="dot-sep">•</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======================================================
+         NAVBAR (Sticky + Warm Frosted Glass + Dropdown)
+         jQuery: mouseenter/mouseleave → slideDown/slideUp
+    ====================================================== -->
+    <nav class="navbar" id="beranda">
+        <div class="container">
+            <div class="nav-inner">
+                <!-- Logo -->
+                <a href="#beranda" class="nav-logo">
+                    STRI<span>DE</span>
+                    <span class="logo-sub">STUDIO</span>
+                </a>
+
+                <!-- Nav Links Desktop -->
+                <ul class="nav-links">
+                    <li><a href="#beranda" class="nav-active">Beranda</a></li>
+
+                    <!-- Dropdown: Koleksi -->
+                    <li class="nav-dropdown">
+                        <button class="dropdown-toggle" type="button" aria-expanded="false">
+                            Koleksi <i class="fa-solid fa-chevron-down nav-chevron"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#produk" data-filter="sneakers"><i class="fa-solid fa-shoe-prints"></i>
+                                    Sneakers Series</a></li>
+                            <li><a href="#produk" data-filter="formal"><i class="fa-solid fa-briefcase"></i> Formal
+                                    &amp; Derby</a></li>
+                            <li><a href="#produk" data-filter="sport"><i class="fa-solid fa-person-running"></i> Sport
+                                    &amp; Running</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#produk" data-filter="sneakers"><i class="fa-solid fa-fire"></i> Limited
+                                    Edition 2026</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#craft">Craftsmanship</a></li>
+                    <li><a href="#keunggulan">Keunggulan</a></li>
+                    <li><a href="#ulasan">Ulasan</a></li>
+                    <li><a href="#order">Pesan Sekarang</a></li>
+                </ul>
+
+                <!-- Navbar Actions Right -->
+                <div class="nav-actions">
+                    <button class="nav-icon-btn" id="btnSearch" title="Cari Sepatu" type="button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <a href="#order" class="nav-cart-btn" title="Keranjang Belanja">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                    <a href="#order" class="btn-nav">Pesan Sekarang</a>
+
+                    <!-- Mobile Hamburger -->
+                    <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Toggle Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer (jQuery slideToggle) -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-links">
+                <li><a href="#beranda" class="mobile-item">Beranda</a></li>
+                <li><a href="#produk" class="mobile-item">Koleksi Sepatu</a></li>
+                <li><a href="#craft" class="mobile-item">Craftsmanship</a></li>
+                <li><a href="#keunggulan" class="mobile-item">Keunggulan Kami</a></li>
+                <li><a href="#ulasan" class="mobile-item">Ulasan Pelanggan</a></li>
+                <li><a href="#order" class="mobile-item">Formulir Pesanan</a></li>
+                <li><a href="#order" class="btn-mobile-order">Beli Sekarang &rarr;</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- ======================================================
+         HERO SECTION (Editorial Cream Aesthetic + Interactive Gallery Switcher)
+         jQuery: .animate() intro + Interactive Crossfade image switcher
+    ====================================================== -->
+    <header class="hero" id="hero-section">
+        <div class="hero-pattern-bg"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Teks Kiri -->
+                <div class="hero-kiri">
+                    <div class="hero-tag-row">
+                        <span class="hero-pill-badge">
+                            <span class="pulse-dot"></span> Koleksi Eksklusif 2026
+                        </span>
+                        <div class="hero-rating-mini">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>4.9 / 5.0 (3.8k Ulasan)</span>
+                        </div>
+                    </div>
+
+                    <h1 class="hero-headline">
+                        Langkah Presisi,<br>
+                        <em>Karakter Sejati.</em>
+                    </h1>
+
+                    <p class="hero-desc">
+                        Dirancang dengan material kulit full-grain pilihan dan bantalan ergonomis mutakhir. STRIDE
+                        menghadirkan harmoni sempurna antara estetika kontemporer dan kenyamanan tanpa kompromi.
+                    </p>
+
+                    <div class="hero-feature-tags">
+                        <span class="ft-tag"><i class="fa-solid fa-check"></i> Kulit Asli Nappa</span>
+                        <span class="ft-tag"><i class="fa-solid fa-check"></i> Bantalan CloudWalk™</span>
+                        <span class="ft-tag"><i class="fa-solid fa-check"></i> Garansi 365 Hari</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#produk" class="btn-utama">
+                            <span>Jelajahi Koleksi</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#order" class="btn-outline">
+                            <i class="fa-solid fa-cart-flatbed"></i>
+                            <span>Pesan Sekarang</span>
+                        </a>
+                    </div>
+
+                    <!-- Micro Stats Box -->
+                    <div class="hero-stats-card">
+                        <div class="stat-item">
+                            <div class="angka" data-count="15000">15.4K+</div>
+                            <div class="label-stat">Pasang Terjual</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="angka">99.4%</div>
+                            <div class="label-stat">Kepuasan Pembeli</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="angka">24 Jam</div>
+                            <div class="label-stat">Garansi Pengiriman</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gambar Kanan: Interactive Shoe Showcase with Smooth Transition -->
+                <div class="hero-kanan">
+                    <div class="showcase-card">
+                        <!-- Floating Glass Badges -->
+                        <div class="floating-badge badge-top-right">
+                            <span class="badge-label-small">Harga Spesial</span>
+                            <span class="badge-price" id="heroPriceTag">Rp 849.000</span>
+                            <span class="badge-original" id="heroOldPrice">Rp 1.200.000</span>
+                        </div>
+
+                        <div class="floating-badge badge-bottom-left">
+                            <div class="badge-craft-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <div>
+                                <div class="badge-craft-title">Eco-Tanned Leather</div>
+                                <div class="badge-craft-sub" id="heroModelName">STRIDE Air Rush X1</div>
+                            </div>
+                        </div>
+
+                        <!-- Main Image Display Container (with smooth fade/scale animation) -->
+                        <div class="hero-image-stage">
+                            <div class="stage-backdrop-circle"></div>
+                            <img src="img/image.png" alt="STRIDE Sneaker Utama" id="heroMainImage"
+                                class="hero-showcase-img">
+                        </div>
+
+                        <!-- Gallery Thumbnails Switcher (Klik untuk ganti dengan animasi smooth) -->
+                        <div class="gallery-switcher-box">
+                            <span class="gallery-hint">
+                                <i class="fa-solid fa-hand-pointer"></i> Klik model untuk preview animasi:
+                            </span>
+                            <div class="gallery-thumbnails">
+                                <button type="button" class="thumb-btn active" data-src="img/image.png"
+                                    data-name="STRIDE Air Rush X1" data-price="Rp 849.000" data-oldprice="Rp 1.200.000"
+                                    data-tag="Sneakers • Orange &amp; Black">
+                                    <img src="img/image.png" alt="Air Rush X1">
+                                    <span class="thumb-title">Air Rush</span>
+                                </button>
+
+                                <button type="button" class="thumb-btn" data-src="img/sneaker-putih.jpg"
+                                    data-name="STRIDE Clean Court Pure" data-price="Rp 1.299.000"
+                                    data-oldprice="Rp 1.550.000" data-tag="Sneakers • Pristine White">
+                                    <img src="img/sneaker-putih.jpg" alt="Clean Court Pure">
+                                    <span class="thumb-title">Court Pure</span>
+                                </button>
+
+                                <button type="button" class="thumb-btn" data-src="img/formal-hitam.jpg"
+                                    data-name="STRIDE Oxford Classic Black" data-price="Rp 1.850.000"
+                                    data-oldprice="Rp 2.300.000" data-tag="Formal • Italian Calfskin">
+                                    <img src="img/formal-hitam.jpg" alt="Oxford Classic">
+                                    <span class="thumb-title">Oxford</span>
+                                </button>
+
+                                <button type="button" class="thumb-btn" data-src="img/hero-orange.jpg"
+                                    data-name="STRIDE Air Max Fire Velocity" data-price="Rp 1.490.000"
+                                    data-oldprice="Rp 1.850.000" data-tag="Sport • Dynamic Carbon">
+                                    <img src="img/hero-orange.jpg" alt="Fire Velocity">
+                                    <span class="thumb-title">Velocity</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ======================================================
+         CREDENTIAL & TRUST BAR (MEMPERPADAT TAMPILAN)
+    ====================================================== -->
+    <section class="trust-bar-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-gem"></i></div>
+                    <div class="trust-content">
+                        <h4>Material Otentik</h4>
+                        <p>100% Kulit Full-Grain &amp; Busa Reaktif</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                    <div class="trust-content">
+                        <h4>Bebas Biaya Kirim</h4>
+                        <p>Seluruh kota di Indonesia + Asuransi</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <div class="trust-content">
+                        <h4>Garansi Tukar Ukuran</h4>
+                        <p>Salah ukuran? Tukar gratis dalam 30 hari</p>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="trust-content">
+                        <h4>QC 12 Tahap Inspeksi</h4>
+                        <p>Setiap pasang lolos uji ketat laboratorium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         CRAFTSMANSHIP & STORY HIGHLIGHT (EDITORIAL DENSITY)
+    ====================================================== -->
+    <section id="craft" class="section-craft">
+        <div class="container">
+            <div class="craft-banner">
+                <div class="craft-info">
+                    <span class="badge">Anatomy of Craft</span>
+                    <h2 class="craft-title">Dibuat dengan Presisi Tinggi, Diciptakan untuk Ketahanan.</h2>
+                    <p class="craft-p">
+                        Setiap lekuk siluet STRIDE dikembangkan melalui riset biomekanika kaki selama 18 bulan. Kami
+                        memadukan tradisi pembuatan sepatu artisanal Eropa dengan inovasi polimer mutakhir untuk
+                        menghasilkan sepatu yang tak hanya menawan dipandang, namun nyaman dipakai berjam-jam.
+                    </p>
+
+                    <div class="craft-pillars">
+                        <div class="pillar-box">
+                            <div class="pillar-num">01</div>
+                            <div class="pillar-text">
+                                <h5>CloudWalk™ Dual Foam</h5>
+                                <p>Menyerap 82% hentakan tumit saat melangkah di permukaan keras.</p>
+                            </div>
+                        </div>
+
+                        <div class="pillar-box">
+                            <div class="pillar-num">02</div>
+                            <div class="pillar-text">
+                                <h5>Goodyear Welt Stitching</h5>
+                                <p>Jahitan sol tembus anti-jebol yang dapat di-resole kembali hingga bertahun-tahun.</p>
+                            </div>
+                        </div>
+
+                        <div class="pillar-box">
+                            <div class="pillar-num">03</div>
+                            <div class="pillar-text">
+                                <h5>Micro-Perforated Air Flow</h5>
+                                <p>Sirkulasi udara aktif menjaga bagian dalam sepatu tetap sejuk &amp; bebas lembap.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="craft-visual">
+                    <div class="craft-img-card">
+                        <img src="img/sneaker-putih.jpg" alt="Detail Craftsmanship STRIDE" class="craft-main-img">
+                        <div class="craft-quote-badge">
+                            <i class="fa-solid fa-quote-left"></i>
+                            <p>"Sepatu paling nyaman yang pernah saya pakai untuk aktivitas seharian."</p>
+                            <strong>— Dimas Arya, Creative Director</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         PRODUK SECTION — TAB NAVIGASI & INTERACTIVE CARDS
+         jQuery: click → fadeIn & slide (tab panel switching)
+                 mouseenter/mouseleave → animate lift
+    ====================================================== -->
+    <section id="produk" class="section-produk">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Katalog Pilihan</span>
+                <h2 class="section-title">Temukan Siluet Pilihan Anda</h2>
+                <p class="section-subtitle">Tiga kategori kurasi terbaik yang siap menyempurnakan penampilan Anda di
+                    setiap momen.</p>
+            </div>
+
+            <!-- Tab Navigation (Pill Style) -->
+            <div class="tab-nav">
+                <button class="tab-btn active" type="button" data-target="#tab-sneakers">
+                    <i class="fa-solid fa-shoe-prints"></i> Sneakers Collection
+                </button>
+                <button class="tab-btn" type="button" data-target="#tab-formal">
+                    <i class="fa-solid fa-briefcase"></i> Formal &amp; Derby
+                </button>
+                <button class="tab-btn" type="button" data-target="#tab-sport">
+                    <i class="fa-solid fa-person-running"></i> Sport &amp; Performance
+                </button>
+            </div>
+
+            <!-- Tab Panel: Sneakers -->
+            <div id="tab-sneakers" class="tab-panel aktif produk-grid">
+                <!-- Card 1 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/image.png" alt="STRIDE Air Rush X1" class="primary-img">
+                        <span class="card-badge-label badge-hot">Best Seller</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran:
+                                39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Sneakers Urban</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 4.9 (248)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Air Rush X1</h3>
+                        <p class="card-desc">Sneaker ringan berteknologi Air Cushion dengan sirkulasi udara aktif untuk
+                            kenyamanan seharian.</p>
+                        <div class="card-swatches">
+                            <span class="swatch orange active" title="Sunset Orange"></span>
+                            <span class="swatch white" title="Crisp White"></span>
+                            <span class="swatch black" title="Obsidian Black"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 849.000</span>
+                                <span class="card-harga-coret">Rp 1.200.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Air Rush X1">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/sneaker-putih.jpg" alt="STRIDE Clean Court Pure" class="primary-img">
+                        <span class="card-badge-label badge-new">New Arrival</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran:
+                                38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Minimalist Heritage</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 5.0 (182)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Clean Court Pure</h3>
+                        <p class="card-desc">Siluet minimalis premium berbahan kulit full-grain putih untuk tampilan
+                            bersih, rapi, dan berkelas.</p>
+                        <div class="card-swatches">
+                            <span class="swatch white active" title="Pristine White"></span>
+                            <span class="swatch cream" title="Off-White Ivory"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 1.299.000</span>
+                                <span class="card-harga-coret">Rp 1.550.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Clean Court Pure">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/hero-orange.jpg" alt="STRIDE Boost Pro V2" class="primary-img">
+                        <span class="card-badge-label badge-sale">-25% OFF</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran:
+                                40</span><span>41</span><span>42</span><span>43</span><span>44</span><span>45</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Sportstyle Sneaker</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 4.8 (95)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Boost Pro V2</h3>
+                        <p class="card-desc">Bantalan sol Boost elastis berdaya pantul tinggi memberikan lonjakan energi
+                            di setiap langkah.</p>
+                        <div class="card-swatches">
+                            <span class="swatch orange active" title="Flame Orange"></span>
+                            <span class="swatch black" title="Stealth Black"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 675.000</span>
+                                <span class="card-harga-coret">Rp 900.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Boost Pro V2">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Panel: Formal -->
+            <div id="tab-formal" class="tab-panel produk-grid">
+                <!-- Card 4 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/formal-hitam.jpg" alt="STRIDE Oxford Classic" class="primary-img">
+                        <span class="card-badge-label badge-premium">Signature</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran:
+                                39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Sartorial Oxford</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 4.9 (134)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Oxford Classic</h3>
+                        <p class="card-desc">Sepatu Oxford kulit sapi berstandar Goodyear welt dengan lapisan sol kayu
+                            kokoh yang tahan lama.</p>
+                        <div class="card-swatches">
+                            <span class="swatch black active" title="Midnight Black"></span>
+                            <span class="swatch brown" title="Cognac Brown"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 1.850.000</span>
+                                <span class="card-harga-coret">Rp 2.200.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Oxford Classic">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/formal-hitam.jpg" alt="STRIDE Derby Executive" class="primary-img">
+                        <span class="card-badge-label badge-sale">-18% OFF</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran: 40</span><span>41</span><span>42</span><span>43</span><span>44</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Business Dress</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 4.9 (88)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Derby Executive</h3>
+                        <p class="card-desc">Derby cap-toe elegan dari calfskin Italia bertekstur lembut. Menunjang
+                            wibawa di ruang rapat.</p>
+                        <div class="card-swatches">
+                            <span class="swatch black active" title="Polished Black"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 2.200.000</span>
+                                <span class="card-harga-coret">Rp 2.700.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Derby Executive">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/sneaker-putih.jpg" alt="STRIDE Chelsea Boot Slim" class="primary-img">
+                        <span class="card-badge-label badge-new">Versatile</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran: 39</span><span>40</span><span>41</span><span>42</span><span>43</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Modern Boot</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 4.7 (72)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Chelsea Boot Slim</h3>
+                        <p class="card-desc">Siluet ramping dengan elastis samping ganda dan sol vibram ringan.
+                            Fleksibel untuk formal maupun kasual.</p>
+                        <div class="card-swatches">
+                            <span class="swatch cream active" title="Sand Suede"></span>
+                            <span class="swatch black" title="Black Leather"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 1.450.000</span>
+                                <span class="card-harga-coret">Rp 1.800.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Chelsea Boot Slim">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Panel: Sport -->
+            <div id="tab-sport" class="tab-panel produk-grid">
+                <!-- Card 7 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/image.png" alt="STRIDE Run Elite Carbon" class="primary-img">
+                        <span class="card-badge-label badge-hot">Carbon Tech</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran:
+                                39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span><span>45</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Marathon Racing</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 5.0 (310)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Run Elite Carbon</h3>
+                        <p class="card-desc">Sepatu lari kompetisi berpelat serat karbon terintegrasi dengan busa
+                            ultra-responsif untuk rekor terbaik Anda.</p>
+                        <div class="card-swatches">
+                            <span class="swatch orange active" title="Hyper Orange"></span>
+                            <span class="swatch black" title="Carbon Stealth"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 2.990.000</span>
+                                <span class="card-harga-coret">Rp 3.400.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Run Elite Carbon">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/sneaker-putih.jpg" alt="STRIDE Gym Pro Training" class="primary-img">
+                        <span class="card-badge-label badge-new">Flat Sole</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran:
+                                38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Cross-Training &amp; HIIT</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 4.8 (64)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Gym Pro Training</h3>
+                        <p class="card-desc">Sol datar berdaya cengkeram tinggi dirancang khusus untuk stabilitas angkat
+                            beban berat dan latihan intensif.</p>
+                        <div class="card-swatches">
+                            <span class="swatch white active" title="Gym White"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 720.000</span>
+                                <span class="card-harga-coret">Rp 950.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Gym Pro Training">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="produk-card">
+                    <div class="card-img-wrap">
+                        <img src="img/hero-orange.jpg" alt="STRIDE Court Pro Indoor" class="primary-img">
+                        <span class="card-badge-label badge-sale">-30% OFF</span>
+                        <div class="card-quick-sizes">
+                            <span>Ukuran:
+                                39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="card-cat">Indoor Court</span>
+                            <div class="card-rating"><i class="fa-solid fa-star"></i> 4.9 (119)</div>
+                        </div>
+                        <h3 class="card-nama">STRIDE Court Pro Indoor</h3>
+                        <p class="card-desc">Outsole karet non-marking dengan pelindung pergelangan kaki empuk. Pilihan
+                            utama untuk bulutangkis dan futsal.</p>
+                        <div class="card-swatches">
+                            <span class="swatch orange active" title="Court Ember"></span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price-wrap">
+                                <span class="card-harga">Rp 595.000</span>
+                                <span class="card-harga-coret">Rp 850.000</span>
+                            </div>
+                            <button class="btn-card" type="button" data-name="STRIDE Court Pro Indoor">
+                                <i class="fa-solid fa-bag-shopping"></i> + Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         KEUNGGULAN SECTION (WHY CHOOSE STRIDE)
+    ====================================================== -->
+    <section id="keunggulan" class="section-keunggulan">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Keunggulan Standar Kami</span>
+                <h2 class="section-title">Nilai Lebih di Setiap Langkah</h2>
+                <p class="section-subtitle">Dedikasi tanpa henti untuk menghadirkan kenyamanan kelas dunia bagi para
+                    pemilik sepatu STRIDE.</p>
+            </div>
+
+            <div class="keunggulan-grid">
+                <div class="keunggulan-card">
+                    <div class="keunggulan-ikon"><i class="fa-solid fa-medal"></i></div>
+                    <h3 class="keunggulan-judul">Kualitas Material Terpilih</h3>
+                    <p class="keunggulan-desc">Setiap potongan kulit dan sol diuji daya tarik serta ketahanan abrasi di
+                        atas 50.000 siklus lentur.</p>
+                </div>
+
+                <div class="keunggulan-card">
+                    <div class="keunggulan-ikon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3 class="keunggulan-judul">Pengiriman Kilat &amp; Aman</h3>
+                    <p class="keunggulan-desc">Kardus double-wall eksklusif dengan dust bag pelindung memastikan produk
+                        sampai dalam kondisi sempurna.</p>
+                </div>
+
+                <div class="keunggulan-card">
+                    <div class="keunggulan-ikon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+                    <h3 class="keunggulan-judul">Jaminan Tukar Ukuran 30 Hari</h3>
+                    <p class="keunggulan-desc">Bila ukuran kurang pas, tim kurir kami siap menjemput dan menukar sepatu
+                        baru tanpa dipungut biaya tambahan.</p>
+                </div>
+
+                <div class="keunggulan-card">
+                    <div class="keunggulan-ikon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="keunggulan-judul">Garansi Pabrik 12 Bulan</h3>
+                    <p class="keunggulan-desc">Perlindungan menyeluruh untuk lem, jahitan, dan komponen sol selama 1
+                        tahun penuh pemakaian wajar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         ULASAN PELANGGAN (TESTIMONIALS / SOCIAL PROOF)
+         Menambah kepadatan dan estetika editorial profesional
+    ====================================================== -->
+    <section id="ulasan" class="section-ulasan">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Ulasan Terverifikasi</span>
+                <h2 class="section-title">Cerita dari Mereka yang Melangkah</h2>
+                <p class="section-subtitle">Lebih dari 3.800 pelanggan setia membagikan pengalaman kenyamanan bersama
+                    STRIDE.</p>
+            </div>
+
+            <div class="ulasan-grid">
+                <!-- Testimonial 1 -->
+                <div class="ulasan-card">
+                    <div class="ulasan-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="ulasan-teks">
+                        "Saya gunakan STRIDE Clean Court Pure untuk rotasi kantor dan jalan santai weekend. Kulitnya
+                        sangat lentur dan tidak membuat tumit lecet sama sekali sejak hari pertama."
+                    </p>
+                    <div class="ulasan-author">
+                        <div class="author-avatar avatar-1">RA</div>
+                        <div>
+                            <div class="author-name">Rangga Aditya</div>
+                            <div class="author-role"><i class="fa-solid fa-badge-check"></i> Pembeli Terverifikasi •
+                                Jakarta Selatan</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="ulasan-card">
+                    <div class="ulasan-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="ulasan-teks">
+                        "Oxford Classic-nya luar biasa elegan. Jahitannya rapi setara brand mewah jutaan rupiah.
+                        Pelayanan CS sangat ramah saat saya konsultasi ukuran sepatu."
+                    </p>
+                    <div class="ulasan-author">
+                        <div class="author-avatar avatar-2">WN</div>
+                        <div>
+                            <div class="author-name">Wicaksono Nugroho</div>
+                            <div class="author-role"><i class="fa-solid fa-badge-check"></i> Pembeli Terverifikasi •
+                                Surabaya</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="ulasan-card">
+                    <div class="ulasan-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="ulasan-teks">
+                        "Run Elite Carbon sangat responsif untuk latihan tempo dan half-marathon. Busa Zoom-nya empuk
+                        tapi tidak gembos. Pengiriman sampai dalam 2 hari ke Bandung!"
+                    </p>
+                    <div class="ulasan-author">
+                        <div class="author-avatar avatar-3">SL</div>
+                        <div>
+                            <div class="author-name">Sarah Lestari</div>
+                            <div class="author-role"><i class="fa-solid fa-badge-check"></i> Pembeli Terverifikasi •
+                                Bandung</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         FORM ORDER SECTION (ELEGANT CREAM & SEMI-WHITE CARD)
+         jQuery Validation Plugin + Custom Method hurufAngka
+         Minimum 5 input: 8 input lengkap + password strength meter
+    ====================================================== -->
+    <section id="order" class="section-order">
+        <div class="container">
+            <div class="order-wrap">
+                <!-- Info Kiri -->
+                <div class="order-info">
+                    <span class="badge">Pemesanan Resmi</span>
+                    <h2 class="section-title">Amankan Sepatu Pilihan Anda</h2>
+                    <p class="order-lead">
+                        Isi formulir pemesanan berikut dengan data valid. Tim concierge kami akan segera memproses
+                        verifikasi dan pengemasan pesanan Anda.
+                    </p>
+
+                    <div class="order-security-card">
+                        <div class="sec-item">
+                            <div class="sec-icon"><i class="fa-solid fa-lock"></i></div>
+                            <div>
+                                <h5>Transaksi Terenkripsi SSL 256-Bit</h5>
+                                <p>Seluruh data privasi Anda terlindungi dengan standar enkripsi perbankan
+                                    internasional.</p>
+                            </div>
+                        </div>
+
+                        <div class="sec-item">
+                            <div class="sec-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div>
+                                <h5>Konfirmasi Cepat 5 Menit</h5>
+                                <p>Invoice dan resi pelacakan langsung dikirim ke WhatsApp &amp; Email Anda.</p>
+                            </div>
+                        </div>
+
+                        <div class="sec-item">
+                            <div class="sec-icon"><i class="fa-solid fa-box-open"></i></div>
+                            <div>
+                                <h5>Kemasan Hardbox Eksklusif</h5>
+                                <p>Dilengkapi sertifikat keaslian, dust bag katun, dan bonus tali sepatu cadangan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panduan Ukuran Singkat (Density Helper) -->
+                    <div class="size-guide-card">
+                        <div class="sg-header">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <strong>Panduan Panjang Telapak Kaki (Insole):</strong>
+                        </div>
+                        <div class="sg-grid">
+                            <span>EU 39 = 24.5 cm</span>
+                            <span>EU 40 = 25.0 cm</span>
+                            <span>EU 41 = 26.0 cm</span>
+                            <span>EU 42 = 26.5 cm</span>
+                            <span>EU 43 = 27.5 cm</span>
+                            <span>EU 44 = 28.0 cm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Box Kanan -->
+                <div class="form-box">
+                    <div class="form-box-header">
+                        <h3><i class="fa-solid fa-clipboard-check"></i> Formulir Pemesanan Resmi</h3>
+                        <span class="form-req-notice"><span class="wajib-bintang">*</span> Wajib diisi</span>
+                    </div>
+
+                    <form id="formOrder" novalidate>
+
+                        <!-- Input 1: Nama Lengkap -->
+                        <div class="form-group">
+                            <label for="fNama"><i class="fa-solid fa-user"></i> Nama Lengkap <span
+                                    class="wajib-bintang">*</span></label>
+                            <input type="text" id="fNama" name="fNama" placeholder="Contoh: Budi Santoso">
+                            <div class="hint-text">Nama lengkap sesuai kartu identitas untuk label pengiriman kurir.
+                            </div>
+                        </div>
+
+                        <!-- Input 2 & 3: Email + HP (satu baris responsif) -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fEmail"><i class="fa-solid fa-envelope"></i> Email Aktif <span
+                                        class="wajib-bintang">*</span></label>
+                                <input type="email" id="fEmail" name="fEmail" placeholder="nama@email.com">
+                                <div class="hint-text">Untuk bukti pembelian digital &amp; tracking otomatis.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="fHp"><i class="fa-solid fa-phone"></i> No. WhatsApp / HP <span
+                                        class="wajib-bintang">*</span></label>
+                                <input type="tel" id="fHp" name="fHp" placeholder="081234567890">
+                                <div class="hint-text">10–13 digit angka valid tanpa tanda + atau spasi.</div>
+                            </div>
+                        </div>
+
+                        <!-- Input 4: Alamat Lengkap -->
+                        <div class="form-group">
+                            <label for="fAlamat"><i class="fa-solid fa-location-dot"></i> Alamat Pengiriman Lengkap
+                                <span class="wajib-bintang">*</span></label>
+                            <textarea id="fAlamat" name="fAlamat" rows="3"
+                                placeholder="Sertakan nama jalan, no. rumah, RT/RW, kelurahan, kota, &amp; kode pos"></textarea>
+                            <div class="hint-text">Pastikan alamat detil agar paket sampai tepat waktu tanpa kendala
+                                kurir.</div>
+                        </div>
+
+                        <!-- Input 5 & 6: Ukuran + Metode Bayar (satu baris responsif) -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fUkuran"><i class="fa-solid fa-shoe-prints"></i> Ukuran Sepatu <span
+                                        class="wajib-bintang">*</span></label>
+                                <div class="select-wrapper">
+                                    <select id="fUkuran" name="fUkuran">
+                                        <option value="">-- Pilih Ukuran --</option>
+                                        <option value="38">EU 38 (24.0 cm)</option>
+                                        <option value="39">EU 39 (24.5 cm)</option>
+                                        <option value="40">EU 40 (25.0 cm)</option>
+                                        <option value="41">EU 41 (26.0 cm)</option>
+                                        <option value="42">EU 42 (26.5 cm)</option>
+                                        <option value="43">EU 43 (27.5 cm)</option>
+                                        <option value="44">EU 44 (28.0 cm)</option>
+                                        <option value="45">EU 45 (28.5 cm)</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down select-arrow"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="fPembayaran"><i class="fa-solid fa-credit-card"></i> Metode Pembayaran <span
+                                        class="wajib-bintang">*</span></label>
+                                <div class="select-wrapper">
+                                    <select id="fPembayaran" name="fPembayaran">
+                                        <option value="">-- Pilih Metode --</option>
+                                        <option value="transfer">Transfer Bank (BCA, Mandiri, BNI, BRI)</option>
+                                        <option value="qris">QRIS (GoPay, OVO, Dana, ShopeePay)</option>
+                                        <option value="cod">COD (Bayar Tunai di Tempat)</option>
+                                        <option value="cc">Kartu Kredit / Debit Online (Visa / Master)</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down select-arrow"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Input 7: Password Akun (Tantangan 1) -->
+                        <div class="form-group">
+                            <label for="fPassword">
+                                <i class="fa-solid fa-key"></i> Buat Password Akun STRIDE <span
+                                    class="wajib-bintang">*</span>
+                            </label>
+                            <input type="password" id="fPassword" name="fPassword"
+                                placeholder="Min. 8 karakter, wajib kombinasi huruf &amp; angka">
+                            <!-- Strength Indicator Bar -->
+                            <div class="strength-wrap">
+                                <div class="strength-bar" id="strengthBar"></div>
+                            </div>
+                            <div class="strength-label" id="strengthLabel"></div>
+                            <div class="hint-text">Password harus memuat kombinasi huruf (besar/kecil) dan angka
+                                numerik.</div>
+                        </div>
+
+                        <!-- Input 8: Konfirmasi Password -->
+                        <div class="form-group">
+                            <label for="fKonfirmasi"><i class="fa-solid fa-check-double"></i> Konfirmasi Password <span
+                                    class="wajib-bintang">*</span></label>
+                            <input type="password" id="fKonfirmasi" name="fKonfirmasi"
+                                placeholder="Ketik ulang password di atas">
+                            <div class="hint-text">Harus sama persis dengan password yang baru saja Anda buat.</div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-submit">
+                            <span>Kirim Pesanan Sekarang</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+
+                        <!-- Pesan Sukses (jQuery show/fadeIn) -->
+                        <div class="sukses-order" id="suksesOrder">
+                            <div class="sukses-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <strong>Pesanan Anda Berhasil Dikirim!</strong>
+                                <p>Nomor resi dan rincian instruksi pembayaran telah dikirimkan ke email dan nomor
+                                    WhatsApp Anda.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         FAQ ACCORDION (BONUS JQUERY EFFECT: slideToggle)
+         Membuat halaman semakin padat, interaktif, dan informatif
+    ====================================================== -->
+    <section class="section-faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Tanya Jawab</span>
+                <h2 class="section-title">Pertanyaan Sering Diajukan</h2>
+                <p class="section-subtitle">Temukan jawaban seputar produk, ukuran, pengiriman, dan kebijakan retur
+                    kami.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Apakah seluruh koleksi STRIDE menggunakan kulit asli?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ya, untuk seri Formal dan Sneaker Heritage, kami menggunakan 100% full-grain leather dan
+                            nappa leather bersertifikasi LWG (Leather Working Group). Untuk seri Sport Performance, kami
+                            menggunakan engineered mesh dengan penguat serat TPU ramah lingkungan.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Bagaimana jika ukuran sepatu yang saya terima ternyata kekecilan atau kebesaran?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Anda mendapatkan fasilitas Garansi Tukar Ukuran 30 Hari secara gratis. Hubungi CS kami via
+                            WhatsApp, kurir kami akan menjemput paket lama dan mengantarkan ukuran yang pas langsung ke
+                            alamat Anda tanpa biaya kirim tambahan.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Berapa lama estimasi pengiriman sampai ke rumah saya?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Untuk area Jabodetabek dan kota-kota besar di Jawa, estimasi pengiriman adalah 1–2 hari
+                            kerja. Untuk kota di luar pulau Jawa, estimasi berkisar 2–4 hari kerja menggunakan ekspedisi
+                            kilat berasuransi penuh.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Apakah bisa melakukan pembayaran sistem COD (Bayar di Tempat)?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Tentu bisa! Silakan pilih opsi COD pada kolom Metode Pembayaran saat mengisi formulir
+                            pemesanan. Anda cukup menyerahkan uang tunai kepada kurir saat paket sampai di alamat Anda.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ======================================================
+         FOOTER (EDITORIAL CREAM & WARM CHARCOAL ACCENTS)
+    ====================================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#beranda" class="footer-logo">STRI<span>DE</span></a>
+                    <p class="footer-tagline">
+                        Merek sepatu premium karya anak bangsa yang memadukan keahlian tradisi kriya dengan teknologi
+                        bantalan modern. Didesain untuk mereka yang menghargai setiap langkah perjalanan.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="#beranda" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#beranda" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#beranda" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#beranda" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Kategori Sepatu</h4>
+                    <ul>
+                        <li><a href="#produk">Sneakers Kasual</a></li>
+                        <li><a href="#produk">Oxford Formal</a></li>
+                        <li><a href="#produk">Sepatu Lari Marathon</a></li>
+                        <li><a href="#produk">Chelsea Boots Kulit</a></li>
+                        <li><a href="#produk">Perawatan Sepatu</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Layanan Pelanggan</h4>
+                    <ul>
+                        <li><a href="#keunggulan">Kebijakan Garansi 1 Tahun</a></li>
+                        <li><a href="#keunggulan">Panduan Tukar Ukuran</a></li>
+                        <li><a href="#order">Pelacakan Pesanan</a></li>
+                        <li><a href="#craft">Kisah Craftsmanship</a></li>
+                        <li><a href="#ulasan">Ulasan Pelanggan</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Bergabung dengan STRIDE Club</h4>
+                    <p>Dapatkan voucher Rp 100.000 untuk pesanan pertama dan akses awal rilisan edisi terbatas.</p>
+                    <form class="newsletter-form"
+                        onsubmit="event.preventDefault(); alert('Terima kasih! Kode voucher telah dikirim ke email Anda.');">
+                        <input type="email" placeholder="Masukkan alamat email Anda" required>
+                        <button type="submit">Daftar</button>
+                    </form>
+                    <div class="payment-badges">
+                        <span><i class="fa-brands fa-cc-visa"></i></span>
+                        <span><i class="fa-brands fa-cc-mastercard"></i></span>
+                        <span><i class="fa-solid fa-qrcode"></i> QRIS</span>
+                        <span><i class="fa-solid fa-building-columns"></i> Bank Transfer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copy">
+                    &copy; 2026 STRIDE Premium Footwear. Tugas Praktikum Pemrograman Web Dasar.
+                </p>
+                <p class="footer-academic">
+                    Praktikum Pemrograman Web Dasar (PPWD) &mdash; Pertemuan Minggu 10 &amp; 11
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Toast Notification (jQuery fadeIn/fadeOut) -->
+    <div id="toast"></div>
+
+    <!-- Back to Top Button (jQuery scroll + animate) -->
+    <button id="kembaliAtas" type="button" aria-label="Kembali ke atas">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+
+    <!-- JavaScript Logika Utama -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
