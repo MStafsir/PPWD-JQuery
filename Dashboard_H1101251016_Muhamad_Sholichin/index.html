@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NexaCloud Enterprise — Admin Dashboard | Muhamad Sholichin (H1101251016)</title>
+  <!-- 3. Bootstrap 5.3.0 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 4. Bootstrap Icons 1.10.0 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- 5. Google Fonts (Plus Jakarta Sans & JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- 6. CSS Kustom (WAJIB setelah Bootstrap CSS) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- =====================================================================
+       AMBIENT LUMINOUS SAPPHIRE & CYAN BACKDROP (UNTUK REFRAKSI GLASS NYATA)
+       ===================================================================== -->
+  <div class="ambient-glass-backdrop" aria-hidden="true"></div>
+  <div class="ambient-grid-pattern" aria-hidden="true"></div>
+
+  <!-- =====================================================================
+       KOMPONEN 1: NAVBAR RESPONSIF DENGAN DROPDOWN (BAB 2 & BAB 11.1)
+       ===================================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top glass-nav">
+    <div class="container-fluid px-3 px-lg-4">
+      <a class="navbar-brand fw-bold gap-2" href="#" data-switch-view="view-overview">
+        <span class="brand-icon-glass">
+          <i class="bi bi-cloud-check-fill"></i>
+        </span>
+        <span>NexaCloud</span>
+        <span class="badge rounded-pill text-bg-info ms-1">ENTERPRISE 5.3</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav_H1101251016"
+        aria-controls="navbarNav_H1101251016" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav_H1101251016">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 mt-3 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#overview" data-switch-view="view-overview">
+              <i class="bi bi-grid-1x2-fill me-1 text-info"></i>Ringkasan
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#users" data-switch-view="view-users">
+              <i class="bi bi-people-fill me-1 text-info"></i>Data Pengguna
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services" data-switch-view="view-services">
+              <i class="bi bi-hdd-stack-fill me-1 text-info"></i>Layanan Cloud
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#billing" data-switch-view="view-billing">
+              <i class="bi bi-receipt-cutoff me-1 text-info"></i>Tagihan
+            </a>
+          </li>
+          <li class="nav-item my-2 my-lg-0 ms-lg-2">
+            <!-- Tombol pemicu Alert Dinamis (Challenge Bab 10.2) -->
+            <button id="btnSimpan_H1101251016" type="button" class="btn btn-primary btn-sm px-3 py-2">
+              <i class="bi bi-arrow-repeat me-1"></i>Sinkronisasi Sistem
+            </button>
+          </li>
+          <!-- Dropdown Profil Admin -->
+          <li class="nav-item dropdown ms-lg-2">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle me-1 text-info"></i> Muhamad Sholichin (H1101251016)
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <span class="dropdown-item-text small text-secondary font-mono">
+                  NIM: H1101251016 · Admin Utama
+                </span>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="#users" data-switch-view="view-users">
+                  <i class="bi bi-person-badge me-2 text-info"></i>Manajemen Pengguna
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#reports" data-switch-view="view-reports">
+                  <i class="bi bi-shield-check me-2 text-info"></i>Log Audit &amp; Laporan
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../index.html">
+                  <i class="bi bi-box-arrow-up-left me-2 text-info"></i>Kembali ke Portal Utama
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="#" id="btnResetSession_H1101251016">
+                  <i class="bi bi-lock me-2 text-info"></i>Kunci Sesi Admin
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================================================
+       TATA LETAK UTAMA: CONTAINER-FLUID + ROW (SIDEBAR + MAIN CONTENT)
+       ===================================================================== -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- =================================================================
+           KOMPONEN 2: SIDEBAR DENGAN MENU LIST GROUP (BAB 9.3 & BAB 11.1)
+           Aturan Grid Tabel 9.2: col-12 col-md-3 col-lg-2
+           Setiap item membuka halaman/tampilan berbeda secara instan!
+           ================================================================= -->
+      <aside class="col-12 col-md-3 col-lg-2 sidebar py-3 px-3">
+        <div>
+          <div class="sidebar-section-label">Menu Manajemen</div>
+          <div class="list-group list-group-flush" id="sidebarMenu_H1101251016">
+            <a href="#overview" class="list-group-item list-group-item-action active" data-switch-view="view-overview">
+              <span><i class="bi bi-speedometer2 me-2"></i>Ringkasan Utama</span>
+              <span class="sidebar-badge-pill">HOME</span>
+            </a>
+            <a href="#users" class="list-group-item list-group-item-action" data-switch-view="view-users">
+              <span><i class="bi bi-people me-2"></i>Data Pengguna</span>
+              <span class="sidebar-badge-pill" id="sidebarUserCount_H1101251016">6</span>
+            </a>
+            <a href="#services" class="list-group-item list-group-item-action" data-switch-view="view-services">
+              <span><i class="bi bi-hdd-rack me-2"></i>Katalog Layanan</span>
+              <span class="sidebar-badge-pill">6 Paket</span>
+            </a>
+            <a href="#billing" class="list-group-item list-group-item-action" data-switch-view="view-billing">
+              <span><i class="bi bi-credit-card-2-front me-2"></i>Transaksi &amp; Billing</span>
+              <span class="sidebar-badge-pill">Rp 148Jt</span>
+            </a>
+            <a href="#reports" class="list-group-item list-group-item-action" data-switch-view="view-reports">
+              <span><i class="bi bi-file-earmark-bar-graph me-2"></i>Laporan &amp; Audit</span>
+              <span class="sidebar-badge-pill">SLA 99%</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Kartu Identitas Pembuat di Bawah Sidebar -->
+        <div class="sidebar-telemetry-card">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="small font-mono text-uppercase text-info fw-bold">Admin Session</span>
+            <span class="d-inline-flex align-items-center gap-1 small font-mono text-info">
+              <span class="pulse-dot"></span>
+              <span>ONLINE</span>
+            </span>
+          </div>
+          <div class="small fw-bold text-white lh-sm mb-1">
+            Muhamad Sholichin Tafsir Srilintang
+          </div>
+          <div class="small font-mono text-secondary mb-2">
+            NIM: <span class="text-info fw-bold">H1101251016</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-between pt-2 border-top border-light border-opacity-10 small font-mono text-secondary">
+            <span>Pertemuan 13</span>
+            <span class="text-info">Bootstrap 5.3</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- =================================================================
+           AREA KONTEN UTAMA (col-12 col-md-9 col-lg-10)
+           Memuat 5 Tampilan Halaman Berbeda sesuai Menu yang Dipilih
+           ================================================================= -->
+      <main class="col-12 col-md-9 col-lg-10 py-4 px-md-4">
+
+        <!-- Wadah Alert Dinamis Global (Challenge Bab 10.2) -->
+        <div id="areaAlert_H1101251016" class="mb-3" aria-live="polite"></div>
+
+        <!-- ===============================================================
+             HALAMAN 1: RINGKASAN UTAMA / OVERVIEW DASHBOARD (DEFAULT)
+             =============================================================== -->
+        <section id="view-overview" class="dashboard-page-view active-view">
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+            <div>
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2 font-mono small"
+                style="background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(125, 211, 252, 0.35); color: #bae6fd;">
+                <i class="bi bi-layers-half"></i>
+                <span>PANEL KENDALI UTAMA · SISTEM MANAJEMEN CLOUD &amp; PELANGGAN</span>
+              </div>
+              <h1 class="h3 fw-bold mb-1">Ringkasan Eksekutif NexaCloud Enterprise</h1>
+              <p class="text-secondary mb-0 small">
+                Administrator: <strong class="text-white">Muhamad Sholichin Tafsir Srilintang (H1101251016)</strong> ·
+                Mengelola pengguna, infrastruktur server VPS, layanan cloud, dan transaksi tagihan klien.
+              </p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-glass-secondary btn-sm px-3 py-2" data-switch-view="view-services">
+                <i class="bi bi-hdd-stack me-1 text-info"></i>Lihat Paket Cloud
+              </button>
+              <button type="button" class="btn btn-primary btn-sm px-3 py-2" data-switch-view="view-users">
+                <i class="bi bi-person-plus-fill me-1"></i>Kelola Pengguna
+              </button>
+            </div>
+          </div>
+
+          <!-- KOMPONEN 3: 4 CARD STATISTIK DENGAN IKON (BAB 4.5, 9.3 & 11.1)
+               Class Bootstrap text-bg-* dipertahankan, visual menggunakan palet Sapphire-Cyan seragam -->
+          <div class="row g-3 mb-4">
+            <!-- Card 1 -->
+            <div class="col-6 col-lg-3">
+              <div class="card h-100 stat-card text-bg-primary">
+                <div class="card-body d-flex flex-column justify-content-between p-3 p-sm-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="stat-label">Total Pelanggan</span>
+                    <div class="stat-icon-box">
+                      <i class="bi bi-people-fill"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="stat-value mb-2">1,284</div>
+                    <span class="stat-delta">
+                      <i class="bi bi-arrow-up-right text-info"></i> +14.2% bulan ini
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-6 col-lg-3">
+              <div class="card h-100 stat-card text-bg-success">
+                <div class="card-body d-flex flex-column justify-content-between p-3 p-sm-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="stat-label">Instance Cloud Aktif</span>
+                    <div class="stat-icon-box">
+                      <i class="bi bi-hdd-network-fill"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="stat-value mb-2">642</div>
+                    <span class="stat-delta">
+                      <i class="bi bi-check2-circle text-info"></i> 99.98% Uptime SLA
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-6 col-lg-3">
+              <div class="card h-100 stat-card text-bg-warning">
+                <div class="card-body d-flex flex-column justify-content-between p-3 p-sm-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="stat-label">Pendapatan Bulanan</span>
+                    <div class="stat-icon-box">
+                      <i class="bi bi-wallet2"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="stat-value mb-2">Rp 148,5 Jt</div>
+                    <span class="stat-delta">
+                      <i class="bi bi-graph-up-arrow text-info"></i> +18.4% YoY Growth
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-6 col-lg-3">
+              <div class="card h-100 stat-card text-bg-danger">
+                <div class="card-body d-flex flex-column justify-content-between p-3 p-sm-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="stat-label">Tiket Support Aktif</span>
+                    <div class="stat-icon-box">
+                      <i class="bi bi-headset"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="stat-value mb-2">7 Tiket</div>
+                    <span class="stat-delta">
+                      <i class="bi bi-clock-history text-info"></i> Respon &lt; 5 Menit
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KOMPONEN PENGAYAAN (BAB 6.3 & 10.2): CARD PROGRESS BAR KAPASITAS SERVER -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-cpu-fill text-info"></i>
+                <h2 class="h6 fw-bold mb-0">Utilisasi Infrastruktur Data Center (Cluster Jakarta &amp; Singapura)</h2>
+              </div>
+              <span class="badge text-bg-success font-mono">STATUS SERVER: OPTIMAL</span>
+            </div>
+            <div class="card-body p-3 p-md-4">
+              <div class="row g-4">
+                <!-- Progress 1 -->
+                <div class="col-12 col-md-4">
+                  <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <span class="fw-semibold"><i class="bi bi-cpu text-info me-1"></i>Beban Komputasi vCPU</span>
+                    <span class="font-mono text-info fw-bold">78%</span>
+                  </div>
+                  <div class="progress" role="progressbar" aria-label="Beban Komputasi vCPU" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 78%"></div>
+                  </div>
+                  <div class="small text-secondary mt-2 font-mono">498 / 640 Core Aktif · Suhu: 34.2°C</div>
+                </div>
+
+                <!-- Progress 2 -->
+                <div class="col-12 col-md-4">
+                  <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <span class="fw-semibold"><i class="bi bi-memory text-info me-1"></i>Alokasi Memori DDR5 ECC</span>
+                    <span class="font-mono text-info fw-bold">62%</span>
+                  </div>
+                  <div class="progress" role="progressbar" aria-label="Alokasi Memori DDR5" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 62%"></div>
+                  </div>
+                  <div class="small text-secondary mt-2 font-mono">1.58 TB / 2.56 TB Terpakai · Latensi 0.08 ms</div>
+                </div>
+
+                <!-- Progress 3 -->
+                <div class="col-12 col-md-4">
+                  <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <span class="fw-semibold"><i class="bi bi-nvme text-info me-1"></i>Kapasitas Penyimpanan NVMe</span>
+                    <span class="font-mono text-info fw-bold">45%</span>
+                  </div>
+                  <div class="progress" role="progressbar" aria-label="Kapasitas NVMe" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 45%"></div>
+                  </div>
+                  <div class="small text-secondary mt-2 font-mono">57.6 TB / 128 TB RAID-10 Pool</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KOMPONEN 4: TABEL DATA RESPONSIF + FILTER INTERAKTIF (BAB 5 & 11.1) -->
+          <div class="card shadow-sm">
+            <div class="card-header d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div>
+                <h2 class="h6 fw-bold mb-1">
+                  <i class="bi bi-shield-lock-fill text-info me-2"></i>Daftar Administrator &amp; Operator Layanan Cloud
+                </h2>
+                <p class="small text-secondary mb-0">
+                  Klik tombol <strong>View Detail</strong> pada kolom aksi untuk memeriksa otorisasi dan metrik kerja di Modal Dinamis.
+                </p>
+              </div>
+              <div class="d-flex flex-wrap align-items-center gap-2">
+                <input type="search" id="searchOperator_H1101251016" class="form-control form-control-sm search-input-glass"
+                  placeholder="Cari nama, email, divisi..." aria-label="Cari operator">
+              </div>
+            </div>
+
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0" id="tableOperators_H1101251016">
+                  <thead class="table-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nama Operator / Admin</th>
+                      <th scope="col">Email Resmi</th>
+                      <th scope="col">Jabatan &amp; Divisi</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" class="text-end">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyOperators_H1101251016">
+                    <!-- Baris 1: Muhamad Sholichin Tafsir Srilintang (H1101251016) -->
+                    <tr>
+                      <td class="font-mono text-info fw-bold">01</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="operator-avatar">MS</span>
+                          <div>
+                            <div class="fw-bold text-white">Muhamad Sholichin Tafsir Srilintang</div>
+                            <div class="small font-mono text-info">NIM: H1101251016 · Root Administrator</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="font-mono small">sholichin.h1101251016@student.untan.ac.id</td>
+                      <td>
+                        <span class="fw-semibold">Lead Cloud System Architect</span>
+                        <div class="small text-secondary">Core Infrastructure &amp; Security</div>
+                      </td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <div class="btn-group" role="group" aria-label="Aksi Operator">
+                          <button type="button" class="btn btn-sm btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#userModal_H1101251016"
+                            data-nama="Muhamad Sholichin Tafsir Srilintang (H1101251016)"
+                            data-email="sholichin.h1101251016@student.untan.ac.id"
+                            data-role="Lead Cloud System Architect — Core Infrastructure & Security"
+                            data-status="Active"
+                            data-joined="12 Januari 2025"
+                            data-load="Otorisasi Penuh (Root Tier-0) · 99.98% SLA">
+                            <i class="bi bi-eye me-1"></i>View Detail
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Baris 2: Ahmad Fauzi -->
+                    <tr>
+                      <td class="font-mono text-secondary">02</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="operator-avatar">AF</span>
+                          <div>
+                            <div class="fw-semibold text-white">Ahmad Fauzi</div>
+                            <div class="small font-mono text-secondary">ID: ADM-204 · Region Jakarta</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="font-mono small">ahmad.fauzi@nexacloud.id</td>
+                      <td>
+                        <span class="fw-semibold">Senior DevOps &amp; Kubernetes Engineer</span>
+                        <div class="small text-secondary">Container Orchestration Division</div>
+                      </td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <div class="btn-group" role="group" aria-label="Aksi Operator">
+                          <button type="button" class="btn btn-sm btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#userModal_H1101251016"
+                            data-nama="Ahmad Fauzi"
+                            data-email="ahmad.fauzi@nexacloud.id"
+                            data-role="Senior DevOps & Kubernetes Engineer — Container Division"
+                            data-status="Active"
+                            data-joined="04 Maret 2025"
+                            data-load="Mengelola 184 Node Kubernetes · Cluster JKT-01">
+                            <i class="bi bi-eye me-1"></i>View Detail
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Baris 3: Budi Santoso -->
+                    <tr>
+                      <td class="font-mono text-secondary">03</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="operator-avatar">BS</span>
+                          <div>
+                            <div class="fw-semibold text-white">Budi Santoso</div>
+                            <div class="small font-mono text-secondary">ID: ADM-318 · Region Singapura</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="font-mono small">budi.santoso@nexacloud.id</td>
+                      <td>
+                        <span class="fw-semibold">Database Reliability Administrator</span>
+                        <div class="small text-secondary">PostgreSQL &amp; Redis Cluster</div>
+                      </td>
+                      <td><span class="badge text-bg-warning">Pending</span></td>
+                      <td class="text-end">
+                        <div class="btn-group" role="group" aria-label="Aksi Operator">
+                          <button type="button" class="btn btn-sm btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#userModal_H1101251016"
+                            data-nama="Budi Santoso"
+                            data-email="budi.santoso@nexacloud.id"
+                            data-role="Database Reliability Administrator — PostgreSQL & Redis Cluster"
+                            data-status="Pending"
+                            data-joined="19 Mei 2025"
+                            data-load="Menunggu Verifikasi Kunci SSH Baru · SGP-02">
+                            <i class="bi bi-eye me-1"></i>View Detail
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Baris 4: Citra Dewi -->
+                    <tr>
+                      <td class="font-mono text-secondary">04</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="operator-avatar">CD</span>
+                          <div>
+                            <div class="fw-semibold text-white">Citra Dewi</div>
+                            <div class="small font-mono text-secondary">ID: ADM-409 · SOC Center</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="font-mono small">citra.dewi@nexacloud.id</td>
+                      <td>
+                        <span class="fw-semibold">Cloud Security &amp; Firewall Specialist</span>
+                        <div class="small text-secondary">Zero-Trust DDoS Mitigation</div>
+                      </td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <div class="btn-group" role="group" aria-label="Aksi Operator">
+                          <button type="button" class="btn btn-sm btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#userModal_H1101251016"
+                            data-nama="Citra Dewi"
+                            data-email="citra.dewi@nexacloud.id"
+                            data-role="Cloud Security & Firewall Specialist — Zero-Trust DDoS Mitigation"
+                            data-status="Active"
+                            data-joined="28 Juni 2025"
+                            data-load="WAF Shield Aktif · 0 Insiden Keamanan">
+                            <i class="bi bi-eye me-1"></i>View Detail
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Baris 5: Raka Pratama -->
+                    <tr>
+                      <td class="font-mono text-secondary">05</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="operator-avatar">RP</span>
+                          <div>
+                            <div class="fw-semibold text-white">Raka Pratama</div>
+                            <div class="small font-mono text-secondary">ID: ADM-512 · Network Ops</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="font-mono small">raka.pratama@nexacloud.id</td>
+                      <td>
+                        <span class="fw-semibold">Network Routing &amp; BGP Specialist</span>
+                        <div class="small text-secondary">Backbone Fiber Interconnect</div>
+                      </td>
+                      <td><span class="badge text-bg-danger">Inactive</span></td>
+                      <td class="text-end">
+                        <div class="btn-group" role="group" aria-label="Aksi Operator">
+                          <button type="button" class="btn btn-sm btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#userModal_H1101251016"
+                            data-nama="Raka Pratama"
+                            data-email="raka.pratama@nexacloud.id"
+                            data-role="Network Routing & BGP Specialist — Backbone Fiber Interconnect"
+                            data-status="Inactive"
+                            data-joined="11 Agustus 2025"
+                            data-load="Sedang Cuti Terjadwal · Delegasi ke Node JKT-02">
+                            <i class="bi bi-eye me-1"></i>View Detail
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Baris 6: Salsa Aditya -->
+                    <tr>
+                      <td class="font-mono text-secondary">06</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="operator-avatar">SA</span>
+                          <div>
+                            <div class="fw-semibold text-white">Salsa Aditya</div>
+                            <div class="small font-mono text-secondary">ID: ADM-627 · Enterprise Billing</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="font-mono small">salsa.aditya@nexacloud.id</td>
+                      <td>
+                        <span class="fw-semibold">Enterprise Account &amp; Billing Manager</span>
+                        <div class="small text-secondary">Corporate SLA &amp; Invoicing</div>
+                      </td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <div class="btn-group" role="group" aria-label="Aksi Operator">
+                          <button type="button" class="btn btn-sm btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#userModal_H1101251016"
+                            data-nama="Salsa Aditya"
+                            data-email="salsa.aditya@nexacloud.id"
+                            data-role="Enterprise Account & Billing Manager — Corporate SLA & Invoicing"
+                            data-status="Active"
+                            data-joined="03 Oktober 2025"
+                            data-load="Menangani 420 Akun Korporat · 100% Terverifikasi">
+                            <i class="bi bi-eye me-1"></i>View Detail
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card-footer bg-transparent border-top border-light border-opacity-10 d-flex flex-wrap justify-content-between align-items-center py-3 px-4 small text-secondary">
+              <span id="tableCountInfo_H1101251016">Menampilkan 6 dari 6 personel terdaftar</span>
+              <span class="font-mono text-info">NexaCloud Enterprise · H1101251016</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===============================================================
+             HALAMAN 2: MANAJEMEN DATA PENGGUNA & PELANGGAN (VIEW-USERS)
+             =============================================================== -->
+        <section id="view-users" class="dashboard-page-view">
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+            <div>
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2 font-mono small"
+                style="background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(125, 211, 252, 0.35); color: #bae6fd;">
+                <i class="bi bi-people-fill"></i>
+                <span>MODUL MANAJEMEN PENGGUNA · AKSES &amp; PELANGGAN KORPORAT</span>
+              </div>
+              <h2 class="h3 fw-bold mb-1">Manajemen Data Pengguna &amp; Klien</h2>
+              <p class="text-secondary mb-0 small">
+                Tambah pengguna baru, atur hak akses organisasi, dan pantau status langganan klien secara langsung.
+              </p>
+            </div>
+            <button type="button" class="btn btn-glass-secondary btn-sm px-3 py-2" data-switch-view="view-overview">
+              <i class="bi bi-arrow-left me-1"></i>Kembali ke Ringkasan
+            </button>
+          </div>
+
+          <div class="row g-4">
+            <!-- Form Tambah Pengguna Baru (Crystal Glass Card) -->
+            <div class="col-12 col-xl-4">
+              <div class="card h-100">
+                <div class="card-header">
+                  <h3 class="h6 fw-bold mb-0">
+                    <i class="bi bi-person-plus-fill text-info me-2"></i>Registrasi Pengguna / Klien Baru
+                  </h3>
+                </div>
+                <div class="card-body p-4">
+                  <form id="formAddUser_H1101251016">
+                    <div class="mb-3">
+                      <label class="form-label small fw-semibold text-light" for="inputUserName">Nama Lengkap / Perusahaan</label>
+                      <input type="text" id="inputUserName" class="form-control search-input-glass" placeholder="Contoh: PT Nusantara Digital" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label small fw-semibold text-light" for="inputUserEmail">Email Kredensial</label>
+                      <input type="email" id="inputUserEmail" class="form-control search-input-glass" placeholder="admin@perusahaan.co.id" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label small fw-semibold text-light" for="inputUserRole">Peran &amp; Paket Akses</label>
+                      <select id="inputUserRole" class="form-select form-select-glass">
+                        <option value="Enterprise Client — Cloud VPS Pro">Enterprise Client — Cloud VPS Pro</option>
+                        <option value="Corporate Partner — Kubernetes Cluster">Corporate Partner — Kubernetes Cluster</option>
+                        <option value="Internal Engineer — DevOps Access">Internal Engineer — DevOps Access</option>
+                        <option value="Database Tenant — Managed PostgreSQL">Database Tenant — Managed PostgreSQL</option>
+                      </select>
+                    </div>
+                    <div class="mb-4">
+                      <label class="form-label small fw-semibold text-light" for="inputUserStatus">Status Akun</label>
+                      <select id="inputUserStatus" class="form-select form-select-glass">
+                        <option value="Active">Active (Terverifikasi)</option>
+                        <option value="Pending">Pending (Menunggu Aktivasi)</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 py-2">
+                      <i class="bi bi-check2-circle me-1"></i>Tambahkan ke Database Pengguna
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabel Direktori Klien & Pengguna -->
+            <div class="col-12 col-xl-8">
+              <div class="card h-100">
+                <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2">
+                  <h3 class="h6 fw-bold mb-0">
+                    <i class="bi bi-card-list text-info me-2"></i>Direktori Akun Klien &amp; Organisasi Terdaftar
+                  </h3>
+                  <span class="badge text-bg-success font-mono" id="clientDirectoryBadge_H1101251016">6 AKUN AKTIF</span>
+                </div>
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle mb-0">
+                      <thead class="table-dark">
+                        <tr>
+                          <th>ID</th>
+                          <th>Nama Akun / Organisasi</th>
+                          <th>Email Kontak</th>
+                          <th>Layanan &amp; Peran</th>
+                          <th>Status</th>
+                          <th class="text-end">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbodyClientDirectory_H1101251016">
+                        <tr>
+                          <td class="font-mono text-info">CL-01</td>
+                          <td class="fw-bold">Muhamad Sholichin (H1101251016)</td>
+                          <td class="font-mono small">sholichin.h1101251016@student.untan.ac.id</td>
+                          <td>Principal System Owner</td>
+                          <td><span class="badge text-bg-success">Active</span></td>
+                          <td class="text-end">
+                            <button type="button" class="btn btn-sm btn-primary"
+                              data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                              data-nama="Muhamad Sholichin Tafsir Srilintang (H1101251016)"
+                              data-email="sholichin.h1101251016@student.untan.ac.id"
+                              data-role="Principal System Owner — Full Cluster Control"
+                              data-status="Active" data-joined="12 Januari 2025"
+                              data-load="12 Instance Dedicated · Prioritas Utama">
+                              <i class="bi bi-eye me-1"></i>Detail
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-mono text-secondary">CL-02</td>
+                          <td class="fw-semibold">PT Khatulistiwa FinTech</td>
+                          <td class="font-mono small">infra@khatulistiwafintech.co.id</td>
+                          <td>Enterprise Client — Kubernetes HA</td>
+                          <td><span class="badge text-bg-success">Active</span></td>
+                          <td class="text-end">
+                            <button type="button" class="btn btn-sm btn-primary"
+                              data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                              data-nama="PT Khatulistiwa FinTech"
+                              data-email="infra@khatulistiwafintech.co.id"
+                              data-role="Enterprise Client — Kubernetes High Availability"
+                              data-status="Active" data-joined="15 Februari 2025"
+                              data-load="24 Node Aktif · Tagihan Rp 28.500.000/bln">
+                              <i class="bi bi-eye me-1"></i>Detail
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-mono text-secondary">CL-03</td>
+                          <td class="fw-semibold">RS Medika Sentosa Digital</td>
+                          <td class="font-mono small">it.support@medikasentosa.id</td>
+                          <td>Database Tenant — PostgreSQL Cluster</td>
+                          <td><span class="badge text-bg-success">Active</span></td>
+                          <td class="text-end">
+                            <button type="button" class="btn btn-sm btn-primary"
+                              data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                              data-nama="RS Medika Sentosa Digital"
+                              data-email="it.support@medikasentosa.id"
+                              data-role="Database Tenant — Encrypted PostgreSQL Cluster"
+                              data-status="Active" data-joined="09 April 2025"
+                              data-load="Backup Harian Otomatis · Storage 4.2 TB">
+                              <i class="bi bi-eye me-1"></i>Detail
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-mono text-secondary">CL-04</td>
+                          <td class="fw-semibold">Borneo E-Commerce Hub</td>
+                          <td class="font-mono small">devops@borneohub.id</td>
+                          <td>Enterprise Client — Cloud VPS Pro</td>
+                          <td><span class="badge text-bg-warning">Pending</span></td>
+                          <td class="text-end">
+                            <button type="button" class="btn btn-sm btn-primary"
+                              data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                              data-nama="Borneo E-Commerce Hub"
+                              data-email="devops@borneohub.id"
+                              data-role="Enterprise Client — Cloud VPS Pro Scaling"
+                              data-status="Pending" data-joined="21 September 2025"
+                              data-load="Menunggu Konfirmasi Upgrade 32 vCPU">
+                              <i class="bi bi-eye me-1"></i>Detail
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="font-mono text-secondary">CL-05</td>
+                          <td class="fw-semibold">EduSmart Kampus Cloud</td>
+                          <td class="font-mono small">sysadmin@edusmart.ac.id</td>
+                          <td>Corporate Partner — LMS Hosting</td>
+                          <td><span class="badge text-bg-success">Active</span></td>
+                          <td class="text-end">
+                            <button type="button" class="btn btn-sm btn-primary"
+                              data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                              data-nama="EduSmart Kampus Cloud"
+                              data-email="sysadmin@edusmart.ac.id"
+                              data-role="Corporate Partner — Dedicated LMS Hosting"
+                              data-status="Active" data-joined="02 Oktober 2025"
+                              data-load="18.500 Mahasiswa Aktif · Uptime 99.99%">
+                              <i class="bi bi-eye me-1"></i>Detail
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===============================================================
+             HALAMAN 3: KATALOG LAYANAN & PAKET CLOUD (VIEW-SERVICES)
+             =============================================================== -->
+        <section id="view-services" class="dashboard-page-view">
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+            <div>
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2 font-mono small"
+                style="background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(125, 211, 252, 0.35); color: #bae6fd;">
+                <i class="bi bi-hdd-rack-fill"></i>
+                <span>KATALOG PRODUK &amp; INFRASTRUKTUR · NEXACLOUD SERVICES</span>
+              </div>
+              <h2 class="h3 fw-bold mb-1">Katalog Layanan &amp; Paket Server Cloud</h2>
+              <p class="text-secondary mb-0 small">
+                Daftar produk infrastruktur yang dikelola pada sistem: VPS NVMe, Kubernetes Cluster, Database Terkelola, dan Object Storage.
+              </p>
+            </div>
+            <button type="button" class="btn btn-glass-secondary btn-sm px-3 py-2" data-switch-view="view-overview">
+              <i class="bi bi-arrow-left me-1"></i>Kembali ke Ringkasan
+            </button>
+          </div>
+
+          <!-- 3 Kartu Unggulan Paket Cloud -->
+          <div class="row g-3 mb-4">
+            <div class="col-12 col-md-4">
+              <div class="card h-100 stat-card text-bg-primary">
+                <div class="card-body p-4">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge text-bg-success">TERLARIS</span>
+                    <div class="stat-icon-box"><i class="bi bi-hdd-stack"></i></div>
+                  </div>
+                  <h3 class="h5 fw-bold mb-1">Cloud VPS NVMe Pro</h3>
+                  <p class="small text-secondary mb-3">8 vCPU AMD EPYC · 32 GB DDR5 · 500 GB NVMe Gen4</p>
+                  <div class="stat-value mb-3">Rp 850.000<span class="fs-6 fw-normal text-secondary">/bln</span></div>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top border-light border-opacity-10 small font-mono">
+                    <span>Pelanggan Aktif: 312</span>
+                    <span class="text-info">Ready Stock</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="card h-100 stat-card text-bg-success">
+                <div class="card-body p-4">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge text-bg-success">ENTERPRISE</span>
+                    <div class="stat-icon-box"><i class="bi bi-boxes"></i></div>
+                  </div>
+                  <h3 class="h5 fw-bold mb-1">Managed Kubernetes HA</h3>
+                  <p class="small text-secondary mb-3">Auto-Scaling 3–32 Worker Nodes · Load Balancer Included</p>
+                  <div class="stat-value mb-3">Rp 3.400.000<span class="fs-6 fw-normal text-secondary">/bln</span></div>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top border-light border-opacity-10 small font-mono">
+                    <span>Pelanggan Aktif: 145</span>
+                    <span class="text-info">SLA 99.99%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+              <div class="card h-100 stat-card text-bg-warning">
+                <div class="card-body p-4">
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <span class="badge text-bg-warning">HIGH IOPS</span>
+                    <div class="stat-icon-box"><i class="bi bi-database-fill-gear"></i></div>
+                  </div>
+                  <h3 class="h5 fw-bold mb-1">PostgreSQL Cluster HA</h3>
+                  <p class="small text-secondary mb-3">Primary + 2 Read Replicas · Point-in-Time Recovery</p>
+                  <div class="stat-value mb-3">Rp 1.950.000<span class="fs-6 fw-normal text-secondary">/bln</span></div>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top border-light border-opacity-10 small font-mono">
+                    <span>Pelanggan Aktif: 185</span>
+                    <span class="text-info">Auto-Backup</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabel Spesifikasi Semua Paket Layanan -->
+          <div class="card shadow-sm">
+            <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <h3 class="h6 fw-bold mb-0">
+                <i class="bi bi-list-columns-reverse text-info me-2"></i>Tabel Inventaris Layanan &amp; Tarif Infrastruktur
+              </h3>
+              <span class="small font-mono text-info">Total: 6 Layanan Utama</span>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Kode</th>
+                      <th>Nama Paket Layanan</th>
+                      <th>Spesifikasi Teknis</th>
+                      <th>Tarif Bulanan</th>
+                      <th>Ketersediaan</th>
+                      <th class="text-end">Inspeksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="font-mono text-info">SRV-01</td>
+                      <td class="fw-bold">Cloud VPS NVMe Pro</td>
+                      <td class="small font-mono">8 vCPU · 32 GB RAM · 500 GB NVMe</td>
+                      <td class="font-mono fw-semibold">Rp 850.000</td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Paket Layanan: Cloud VPS NVMe Pro (SRV-01)"
+                          data-email="cluster-vps-jkt01.nexacloud.id"
+                          data-role="8 vCPU AMD EPYC · 32 GB DDR5 · 500 GB NVMe Gen4"
+                          data-status="Active" data-joined="Rilis v2.4"
+                          data-load="312 Instance Berjalan · Bandwidth 10 Gbps">
+                          <i class="bi bi-eye me-1"></i>Spesifikasi
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono text-info">SRV-02</td>
+                      <td class="fw-bold">Managed Kubernetes HA</td>
+                      <td class="small font-mono">Multi-Zone Control Plane · Auto-Heal</td>
+                      <td class="font-mono fw-semibold">Rp 3.400.000</td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Paket Layanan: Managed Kubernetes HA (SRV-02)"
+                          data-email="k8s-api-sgp02.nexacloud.id"
+                          data-role="Kubernetes v1.31 · Multi-Zone Control Plane + Load Balancer"
+                          data-status="Active" data-joined="Rilis v3.1"
+                          data-load="145 Cluster Korporat · Zero-Downtime Upgrade">
+                          <i class="bi bi-eye me-1"></i>Spesifikasi
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono text-info">SRV-03</td>
+                      <td class="fw-bold">PostgreSQL Cluster HA</td>
+                      <td class="small font-mono">16 GB Dedicated RAM · 1 TB SSD RAID</td>
+                      <td class="font-mono fw-semibold">Rp 1.950.000</td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Paket Layanan: PostgreSQL Cluster HA (SRV-03)"
+                          data-email="db-pg-primary.nexacloud.id"
+                          data-role="PostgreSQL 16 HA · Replikasi Sinkron & Backup Otomatis"
+                          data-status="Active" data-joined="Rilis v2.8"
+                          data-load="185 Database Aktif · Enkripsi AES-256">
+                          <i class="bi bi-eye me-1"></i>Spesifikasi
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono text-info">SRV-04</td>
+                      <td class="fw-bold">NexaStore S3 Object Storage</td>
+                      <td class="small font-mono">10 TB Kapasitas · S3 API Compatible</td>
+                      <td class="font-mono fw-semibold">Rp 650.000</td>
+                      <td><span class="badge text-bg-success">Active</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Paket Layanan: NexaStore S3 Object Storage (SRV-04)"
+                          data-email="s3.ap-southeast.nexacloud.id"
+                          data-role="Object Storage Multi-Region · 99.999999999% Durability"
+                          data-status="Active" data-joined="Rilis v2.0"
+                          data-load="57.6 TB Data Tersimpan · Gratis Egress Internal">
+                          <i class="bi bi-eye me-1"></i>Spesifikasi
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===============================================================
+             HALAMAN 4: TRANSAKSI & TAGIHAN PELANGGAN (VIEW-BILLING)
+             =============================================================== -->
+        <section id="view-billing" class="dashboard-page-view">
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+            <div>
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2 font-mono small"
+                style="background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(125, 211, 252, 0.35); color: #bae6fd;">
+                <i class="bi bi-receipt-cutoff"></i>
+                <span>MODUL KEUANGAN · INVOICE, PEMBAYARAN &amp; PENDAPATAN</span>
+              </div>
+              <h2 class="h3 fw-bold mb-1">Manajemen Transaksi &amp; Tagihan Pelanggan</h2>
+              <p class="text-secondary mb-0 small">
+                Rekapitulasi pembayaran langganan server bulanan, status invoice korporat, dan verifikasi lunas otomatis.
+              </p>
+            </div>
+            <button type="button" class="btn btn-glass-secondary btn-sm px-3 py-2" data-switch-view="view-overview">
+              <i class="bi bi-arrow-left me-1"></i>Kembali ke Ringkasan
+            </button>
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-12 col-md-4">
+              <div class="card h-100 stat-card text-bg-primary">
+                <div class="card-body p-4">
+                  <span class="stat-label d-block mb-2">Pendapatan Bulan Berjalan</span>
+                  <div class="stat-value mb-2">Rp 148.500.000</div>
+                  <span class="stat-delta"><i class="bi bi-check-all text-info"></i> 94.2% Invoice Terbayar</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="card h-100 stat-card text-bg-success">
+                <div class="card-body p-4">
+                  <span class="stat-label d-block mb-2">Transaksi Sukses (Bulan Ini)</span>
+                  <div class="stat-value mb-2">418 Invoice</div>
+                  <span class="stat-delta"><i class="bi bi-shield-check text-info"></i> Rekonsiliasi Otomatis</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="card h-100 stat-card text-bg-warning">
+                <div class="card-body p-4">
+                  <span class="stat-label d-block mb-2">Menunggu Pembayaran</span>
+                  <div class="stat-value mb-2">Rp 8.650.000</div>
+                  <span class="stat-delta"><i class="bi bi-hourglass-split text-info"></i> 5 Invoice Jatuh Tempo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <h3 class="h6 fw-bold mb-0">
+                <i class="bi bi-credit-card text-info me-2"></i>Riwayat Invoice &amp; Pembayaran Langganan Terbaru
+              </h3>
+              <span class="badge text-bg-success font-mono">GATEWAY: BANK VA &amp; QRIS</span>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>No. Invoice</th>
+                      <th>Pelanggan / Institusi</th>
+                      <th>Paket Layanan</th>
+                      <th>Nominal Tagihan</th>
+                      <th>Status</th>
+                      <th class="text-end">Rincian</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="font-mono text-info fw-bold">INV-2026-8801</td>
+                      <td class="fw-bold">PT Khatulistiwa FinTech</td>
+                      <td>Managed Kubernetes HA (8 Nodes)</td>
+                      <td class="font-mono fw-semibold">Rp 28.500.000</td>
+                      <td><span class="badge text-bg-success">Paid / Lunas</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Invoice #INV-2026-8801 — PT Khatulistiwa FinTech"
+                          data-email="billing@khatulistiwafintech.co.id"
+                          data-role="Managed Kubernetes HA (8 Worker Nodes) · Periode November 2026"
+                          data-status="Active" data-joined="01 November 2026"
+                          data-load="Nominal: Rp 28.500.000 · Metode: Mandiri Corporate VA">
+                          <i class="bi bi-receipt me-1"></i>Invoice
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono text-info fw-bold">INV-2026-8802</td>
+                      <td class="fw-bold">RS Medika Sentosa Digital</td>
+                      <td>PostgreSQL Cluster HA + S3 Backup</td>
+                      <td class="font-mono fw-semibold">Rp 12.400.000</td>
+                      <td><span class="badge text-bg-success">Paid / Lunas</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Invoice #INV-2026-8802 — RS Medika Sentosa Digital"
+                          data-email="finance@medikasentosa.id"
+                          data-role="PostgreSQL Cluster HA + 10 TB Object Storage Backup"
+                          data-status="Active" data-joined="02 November 2026"
+                          data-load="Nominal: Rp 12.400.000 · Metode: BCA Virtual Account">
+                          <i class="bi bi-receipt me-1"></i>Invoice
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono text-info fw-bold">INV-2026-8803</td>
+                      <td class="fw-bold">Borneo E-Commerce Hub</td>
+                      <td>Cloud VPS NVMe Pro (4 Instance)</td>
+                      <td class="font-mono fw-semibold">Rp 3.400.000</td>
+                      <td><span class="badge text-bg-warning">Pending</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Invoice #INV-2026-8803 — Borneo E-Commerce Hub"
+                          data-email="billing@borneohub.id"
+                          data-role="Cloud VPS NVMe Pro (4 Instance Cluster)"
+                          data-status="Pending" data-joined="03 November 2026"
+                          data-load="Nominal: Rp 3.400.000 · Menunggu Konfirmasi Transfer">
+                          <i class="bi bi-receipt me-1"></i>Invoice
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono text-info fw-bold">INV-2026-8804</td>
+                      <td class="fw-bold">EduSmart Kampus Cloud</td>
+                      <td>Dedicated LMS Hosting Cluster</td>
+                      <td class="font-mono fw-semibold">Rp 19.800.000</td>
+                      <td><span class="badge text-bg-success">Paid / Lunas</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Invoice #INV-2026-8804 — EduSmart Kampus Cloud"
+                          data-email="keuangan@edusmart.ac.id"
+                          data-role="Dedicated Academic LMS Cloud Cluster (18.500 Users)"
+                          data-status="Active" data-joined="03 November 2026"
+                          data-load="Nominal: Rp 19.800.000 · Metode: BNI Virtual Account">
+                          <i class="bi bi-receipt me-1"></i>Invoice
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===============================================================
+             HALAMAN 5: LAPORAN SLA & LOG AUDIT KEAMANAN (VIEW-REPORTS)
+             =============================================================== -->
+        <section id="view-reports" class="dashboard-page-view">
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+            <div>
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-2 font-mono small"
+                style="background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(125, 211, 252, 0.35); color: #bae6fd;">
+                <i class="bi bi-file-earmark-bar-graph-fill"></i>
+                <span>LAPORAN PERFORMA REGIONAL &amp; LOG AUDIT KEAMANAN</span>
+              </div>
+              <h2 class="h3 fw-bold mb-1">Laporan Kinerja Data Center &amp; Audit Sistem</h2>
+              <p class="text-secondary mb-0 small">
+                Pemantauan tingkat ketersediaan layanan (SLA) lintas region dan jejak aktivitas administrator.
+              </p>
+            </div>
+            <button type="button" class="btn btn-glass-secondary btn-sm px-3 py-2" data-switch-view="view-overview">
+              <i class="bi bi-arrow-left me-1"></i>Kembali ke Ringkasan
+            </button>
+          </div>
+
+          <div class="card shadow-sm mb-4">
+            <div class="card-header">
+              <h3 class="h6 fw-bold mb-0">
+                <i class="bi bi-globe-asia-australia text-info me-2"></i>Ketersediaan Jaringan &amp; SLA Data Center Regional
+              </h3>
+            </div>
+            <div class="card-body p-4">
+              <div class="row g-4">
+                <div class="col-12 col-md-4">
+                  <div class="d-flex justify-content-between small mb-2">
+                    <span class="fw-semibold">Jakarta Primary DC (JKT-01)</span>
+                    <span class="font-mono text-info fw-bold">99.99% SLA</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 99%"></div>
+                  </div>
+                  <div class="small text-secondary font-mono mt-2">380 Rack Aktif · Ping Rata-rata: 4.2 ms</div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="d-flex justify-content-between small mb-2">
+                    <span class="fw-semibold">Singapura Edge Hub (SGP-02)</span>
+                    <span class="font-mono text-info fw-bold">99.98% SLA</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 98%"></div>
+                  </div>
+                  <div class="small text-secondary font-mono mt-2">192 Rack Aktif · Ping Internasional: 11.8 ms</div>
+                </div>
+                <div class="col-12 col-md-4">
+                  <div class="d-flex justify-content-between small mb-2">
+                    <span class="fw-semibold">Backup Disaster Recovery (BTH-03)</span>
+                    <span class="font-mono text-info fw-bold">100% Siaga</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 95%"></div>
+                  </div>
+                  <div class="small text-secondary font-mono mt-2">Replikasi Real-Time · RPO &lt; 15 Detik</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card shadow-sm">
+            <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <h3 class="h6 fw-bold mb-0">
+                <i class="bi bi-journal-code text-info me-2"></i>Jejak Audit Aktivitas Sistem (System Security Audit Log)
+              </h3>
+              <span class="small font-mono text-info">Diawasi oleh: Muhamad Sholichin (H1101251016)</span>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Waktu (WIB)</th>
+                      <th>Aktor / Administrator</th>
+                      <th>Aktivitas Sistem</th>
+                      <th>Target Node</th>
+                      <th>Status</th>
+                      <th class="text-end">Detail Log</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="font-mono small text-info">12:40:18 WIB</td>
+                      <td class="fw-bold">Muhamad Sholichin (H1101251016)</td>
+                      <td>Sinkronisasi Kebijakan Firewall &amp; SSL</td>
+                      <td class="font-mono small">cluster-jkt01-core</td>
+                      <td><span class="badge text-bg-success">Verified</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Audit Log #AUD-901 — Muhamad Sholichin (H1101251016)"
+                          data-email="sholichin.h1101251016@student.untan.ac.id"
+                          data-role="Sinkronisasi Kebijakan Firewall & Pembaruan Sertifikat TLS 1.3"
+                          data-status="Active" data-joined="Hari Ini, 12:40 WIB"
+                          data-load="Hash SHA-256 Terverifikasi · 0 Error">
+                          <i class="bi bi-eye me-1"></i>Log
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono small text-secondary">11:15:42 WIB</td>
+                      <td class="fw-semibold">Ahmad Fauzi</td>
+                      <td>Auto-Scaling Worker Node Kubernetes (+4 Node)</td>
+                      <td class="font-mono small">k8s-prod-pool-02</td>
+                      <td><span class="badge text-bg-success">Verified</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Audit Log #AUD-902 — Ahmad Fauzi"
+                          data-email="ahmad.fauzi@nexacloud.id"
+                          data-role="Ekspansi Kapasitas Worker Node Kubernetes (+4 Node Otomatis)"
+                          data-status="Active" data-joined="Hari Ini, 11:15 WIB"
+                          data-load="Durasi Provisioning: 28 Detik · Beban Turun ke 64%">
+                          <i class="bi bi-eye me-1"></i>Log
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="font-mono small text-secondary">09:30:05 WIB</td>
+                      <td class="fw-semibold">Citra Dewi</td>
+                      <td>Mitigasi Otomatis Trafik Anomali DDoS L7</td>
+                      <td class="font-mono small">edge-waf-gateway</td>
+                      <td><span class="badge text-bg-success">Verified</span></td>
+                      <td class="text-end">
+                        <button type="button" class="btn btn-sm btn-primary"
+                          data-bs-toggle="modal" data-bs-target="#userModal_H1101251016"
+                          data-nama="Audit Log #AUD-903 — Citra Dewi"
+                          data-email="citra.dewi@nexacloud.id"
+                          data-role="Pemblokiran Otomatis 14.200 Request Anomali pada Edge WAF"
+                          data-status="Active" data-joined="Hari Ini, 09:30 WIB"
+                          data-load="Layanan Klien 100% Aman · Latensi Normal">
+                          <i class="bi bi-eye me-1"></i>Log
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       KOMPONEN 5: MODAL DETAIL DATA DINAMIS (BAB 7.3, 7.4, 7.6 & BAB 11.1)
+       Hierarki wajib: .modal.fade -> .modal-dialog.modal-dialog-centered
+                       -> .modal-content -> .modal-header + .modal-body + .modal-footer
+       ===================================================================== -->
+  <div class="modal fade" id="userModal_H1101251016" tabindex="-1" aria-labelledby="userModalLabel_H1101251016" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="userModalLabel_H1101251016">
+            <i class="bi bi-info-circle-fill text-info"></i>
+            <span id="modalTitleText_H1101251016">Rincian Data Sistem</span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="telemetry-detail-box mb-3">
+            <div class="small font-mono text-info text-uppercase mb-1">Entitas / Nama Lengkap</div>
+            <div class="fs-5 fw-bold text-white" id="modalNama_H1101251016">-</div>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-12 col-sm-7">
+              <div class="telemetry-detail-box h-100">
+                <div class="small font-mono text-secondary text-uppercase mb-1">Email / Endpoint Sistem</div>
+                <div class="small font-mono text-info text-break" id="modalEmail_H1101251016">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-5">
+              <div class="telemetry-detail-box h-100">
+                <div class="small font-mono text-secondary text-uppercase mb-1">Status Verifikasi</div>
+                <div id="modalStatus_H1101251016">
+                  <span class="badge text-bg-success">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="telemetry-detail-box mb-3">
+            <div class="small font-mono text-secondary text-uppercase mb-1">Peran, Spesifikasi &amp; Divisi</div>
+            <div class="fw-semibold text-white" id="modalRole_H1101251016">-</div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="telemetry-detail-box h-100">
+                <div class="small font-mono text-secondary text-uppercase mb-1">Tanggal / Periode</div>
+                <div class="small font-mono text-white" id="modalJoined_H1101251016">-</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="telemetry-detail-box h-100">
+                <div class="small font-mono text-secondary text-uppercase mb-1">Metrik &amp; Keterangan</div>
+                <div class="small font-mono text-info" id="modalLoad_H1101251016">-</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-glass-secondary btn-sm px-3" data-bs-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-primary btn-sm px-3" id="btnModalAction_H1101251016" data-bs-dismiss="modal">
+            <i class="bi bi-check2-circle me-1"></i>Verifikasi &amp; Kirim Sinyal
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       URUTAN PEMUATAN AKHIR <BODY>:
+       1. Bootstrap 5.3.0 Bundle JS CDN
+       2. Inline <script> Multi-Page View Controller + Modal + Alert + Filter
+       ===================================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (() => {
+      'use strict';
+
+      /* ===================================================================
+         1. AMBIENT GLASS SPOTLIGHT TRACKER (RINGAN & ZERO-LAG)
+         =================================================================== */
+      const rootStyle = document.documentElement.style;
+      window.addEventListener('pointermove', (e) => {
+        const mx = (e.clientX / (window.innerWidth || 1)).toFixed(3);
+        const my = (e.clientY / (window.innerHeight || 1)).toFixed(3);
+        rootStyle.setProperty('--mx', mx);
+        rootStyle.setProperty('--my', my);
+      }, { passive: true });
+
+      /* ===================================================================
+         2. MULTI-VIEW NAVIGATION CONTROLLER (SETIAP MENU PUNYA TAMPILAN SENDIRI)
+         =================================================================== */
+      const allViews = document.querySelectorAll('.dashboard-page-view');
+      const allSwitchLinks = document.querySelectorAll('[data-switch-view]');
+
+      function switchPageView(targetViewId) {
+        allViews.forEach((section) => {
+          if (section.id === targetViewId) {
+            section.classList.add('active-view');
+          } else {
+            section.classList.remove('active-view');
+          }
+        });
+
+        // Sinkronkan state active pada Sidebar dan Navbar
+        allSwitchLinks.forEach((link) => {
+          const linkTarget = link.getAttribute('data-switch-view');
+          if (link.classList.contains('list-group-item') || link.classList.contains('nav-link')) {
+            if (linkTarget === targetViewId) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          }
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      allSwitchLinks.forEach((trigger) => {
+        trigger.addEventListener('click', (e) => {
+          const targetViewId = trigger.getAttribute('data-switch-view');
+          if (targetViewId) {
+            e.preventDefault();
+            switchPageView(targetViewId);
+          }
+        });
+      });
+
+      /* ===================================================================
+         3. INTERACTIVE ALERT TRIGGER (CHALLENGE BAB 10.2)
+         =================================================================== */
+      const btnSimpan = document.getElementById('btnSimpan_H1101251016');
+      const btnResetSession = document.getElementById('btnResetSession_H1101251016');
+      const areaAlert = document.getElementById('areaAlert_H1101251016');
+
+      function tampilkanAlert(pesanHtml) {
+        if (!areaAlert) return;
+        areaAlert.innerHTML = `
+          <div class="alert alert-success alert-dismissible fade show d-flex align-items-center justify-content-between mb-0" role="alert">
+            <div>
+              <i class="bi bi-check-circle-fill me-2 text-info"></i>
+              ${pesanHtml}
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        `;
+      }
+
+      if (btnSimpan) {
+        btnSimpan.addEventListener('click', () => {
+          const waktu = new Date().toLocaleTimeString('id-ID');
+          tampilkanAlert(
+            `<strong>Sinkronisasi Klaster Berhasil!</strong> Seluruh node server, data pelanggan, dan laporan tagihan telah disinkronkan oleh <strong>Muhamad Sholichin (H1101251016)</strong> pada pukul <span class="font-mono">${waktu}</span>.`
+          );
+        });
+      }
+
+      if (btnResetSession) {
+        btnResetSession.addEventListener('click', (e) => {
+          e.preventDefault();
+          tampilkanAlert(
+            `<strong>Proteksi Sesi Aktif!</strong> Sesi administrator <strong>Muhamad Sholichin Tafsir Srilintang (H1101251016)</strong> telah diamankan dengan enkripsi Zero-Trust.`
+          );
+        });
+      }
+
+      /* ===================================================================
+         4. DYNAMIC MODAL HANDLER (BAB 7.6: EVENT show.bs.modal)
+         =================================================================== */
+      const userModalEl = document.getElementById('userModal_H1101251016');
+      const btnModalAction = document.getElementById('btnModalAction_H1101251016');
+      let activeEntityName = '';
+
+      if (userModalEl) {
+        userModalEl.addEventListener('show.bs.modal', (event) => {
+          const triggerBtn = event.relatedTarget;
+          if (!triggerBtn) return;
+
+          const nama = triggerBtn.getAttribute('data-nama') || '-';
+          const email = triggerBtn.getAttribute('data-email') || '-';
+          const role = triggerBtn.getAttribute('data-role') || '-';
+          const status = triggerBtn.getAttribute('data-status') || 'Active';
+          const joined = triggerBtn.getAttribute('data-joined') || '-';
+          const load = triggerBtn.getAttribute('data-load') || '-';
+
+          activeEntityName = nama;
+
+          document.getElementById('modalTitleText_H1101251016').textContent = 'Detail Data · ' + nama.split(' ')[0];
+          document.getElementById('modalNama_H1101251016').textContent = nama;
+          document.getElementById('modalEmail_H1101251016').textContent = email;
+          document.getElementById('modalRole_H1101251016').textContent = role;
+          document.getElementById('modalJoined_H1101251016').textContent = joined;
+          document.getElementById('modalLoad_H1101251016').textContent = load;
+
+          const statusContainer = document.getElementById('modalStatus_H1101251016');
+          let badgeClass = 'text-bg-success';
+          if (status === 'Pending') badgeClass = 'text-bg-warning';
+          if (status === 'Inactive') badgeClass = 'text-bg-danger';
+          statusContainer.innerHTML = `<span class="badge ${badgeClass}">${status}</span>`;
+        });
+      }
+
+      if (btnModalAction) {
+        btnModalAction.addEventListener('click', () => {
+          if (activeEntityName) {
+            tampilkanAlert(
+              `<strong>Data Terverifikasi!</strong> Pemeriksaan otorisasi untuk <strong>${activeEntityName}</strong> telah berhasil dicatat ke dalam log sistem.`
+            );
+          }
+        });
+      }
+
+      /* ===================================================================
+         5. FITUR TAMBAH PENGGUNA BARU SECARA INTERAKTIF (HALAMAN DATA PENGGUNA)
+         =================================================================== */
+      const formAddUser = document.getElementById('formAddUser_H1101251016');
+      const tbodyClientDir = document.getElementById('tbodyClientDirectory_H1101251016');
+      const tbodyMainOperators = document.getElementById('tbodyOperators_H1101251016');
+      const sidebarUserCount = document.getElementById('sidebarUserCount_H1101251016');
+      const clientDirBadge = document.getElementById('clientDirectoryBadge_H1101251016');
+      let clientCounter = 5;
+
+      if (formAddUser && tbodyClientDir) {
+        formAddUser.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nameVal = document.getElementById('inputUserName').value.trim();
+          const emailVal = document.getElementById('inputUserEmail').value.trim();
+          const roleVal = document.getElementById('inputUserRole').value;
+          const statusVal = document.getElementById('inputUserStatus').value;
+
+          if (!nameVal || !emailVal) return;
+
+          clientCounter++;
+          const code = 'CL-0' + clientCounter;
+          const badgeClass = statusVal === 'Active' ? 'text-bg-success' : 'text-bg-warning';
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="font-mono text-info">${code}</td>
+            <td class="fw-semibold text-white"></td>
+            <td class="font-mono small"></td>
+            <td></td>
+            <td><span class="badge ${badgeClass}">${statusVal}</span></td>
+            <td class="text-end">
+              <button type="button" class="btn btn-sm btn-primary"
+                data-bs-toggle="modal" data-bs-target="#userModal_H1101251016">
+                <i class="bi bi-eye me-1"></i>Detail
+              </button>
+            </td>
+          `;
+
+          const cells = tr.querySelectorAll('td');
+          cells[1].textContent = nameVal;
+          cells[2].textContent = emailVal;
+          cells[3].textContent = roleVal;
+
+          const btn = tr.querySelector('button');
+          btn.setAttribute('data-nama', nameVal);
+          btn.setAttribute('data-email', emailVal);
+          btn.setAttribute('data-role', roleVal);
+          btn.setAttribute('data-status', statusVal);
+          btn.setAttribute('data-joined', 'Baru Ditambahkan');
+          btn.setAttribute('data-load', 'Instance Cloud Siap Digunakan');
+
+          tbodyClientDir.prepend(tr);
+
+          if (sidebarUserCount) {
+            sidebarUserCount.textContent = String(clientCounter + 1);
+          }
+          if (clientDirBadge) {
+            clientDirBadge.textContent = (clientCounter + 1) + ' AKUN TERDAFTAR';
+          }
+
+          formAddUser.reset();
+          tampilkanAlert(
+            `<strong>Pengguna Baru Ditambahkan!</strong> Akun <strong>${nameVal}</strong> (${emailVal}) berhasil diregistrasikan ke dalam database sistem.`
+          );
+        });
+      }
+
+      /* ===================================================================
+         6. REALTIME TABLE FILTER PADA TABEL UTAMA
+         =================================================================== */
+      const searchInput = document.getElementById('searchOperator_H1101251016');
+      const countInfo = document.getElementById('tableCountInfo_H1101251016');
+
+      if (searchInput && tbodyMainOperators) {
+        searchInput.addEventListener('input', () => {
+          const rows = Array.from(tbodyMainOperators.querySelectorAll('tr'));
+          const q = searchInput.value.trim().toLowerCase();
+          let visibleCount = 0;
+          rows.forEach((row) => {
+            const match = row.textContent.toLowerCase().includes(q);
+            row.style.display = match ? '' : 'none';
+            if (match) visibleCount++;
+          });
+          if (countInfo) {
+            countInfo.textContent = `Menampilkan ${visibleCount} dari ${rows.length} personel terdaftar`;
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
